@@ -1,0 +1,7 @@
+node_modules
+public
+dist
+package.json
+src/assets/
+*.cssr.js
+*.cssr.ts

@@ -1,28 +1,49 @@
 module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    node: true,
-    es6: true
-  },
-  extends: ["plugin:vue/essential", "eslint:recommended", "plugin:prettier/recommended"],
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: "@babel/eslint-parser"
+    parser: '@typescript-eslint/parser',
+    ecmaVersion: 2020,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true
+    }
   },
+  extends: [
+    'plugin:vue/vue3-recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+    'prettier'
+  ],
   rules: {
-    "prettier/prettier": [
-      "warn",
+    quotes: [0, 'single'],
+    'no-unused-vars': [
+      0,
       {
-        singleQuote: false, // 不使用单引号
-        printWidth: 120, // 换行字符串阈值
-        semi: true, // 句末加分号
-        trailingComma: "none" // 最后一个对象元素加逗号
+        argsIgnorePattern: '^h$',
+        varsIgnorePattern: '^h$'
       }
     ],
-    "vue/no-mutating-props": 0,
-    "linebreak-style": 0,
-    "no-unused-vars": 0,
-    "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off"
+    'vue/custom-event-name-casing': 'off',
+    'no-use-before-define': 'off',
+    'space-before-function-paren': 'off',
+    'comma-dangle': [0, 'never'],
+    '@typescript-eslint/ban-ts-ignore': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-empty-function': 'off',
+    '@typescript-eslint/no-empty-interface': 'off',
+    '@typescript-eslint/no-use-before-define': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-unused-vars': [
+      0,
+      {
+        argsIgnorePattern: '^h$',
+        varsIgnorePattern: '^h$'
+      }
+    ]
   }
-};
+}
