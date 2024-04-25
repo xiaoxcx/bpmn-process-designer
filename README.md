@@ -21,21 +21,26 @@
 
 ## 作者简介
 
-MiyueFE（白小米），也可以叫我小白或者小米，常驻 [掘金社区](https://juejin.cn/)，也可以通过一下方式联系我：
+MiyueFE（白小米），也可以叫我小白或者小米，常驻 [稀土掘金](https://juejin.cn/)，也可以通过以下方式联系我：
 
 - 邮箱：[QQ mail](mailto:913784771@qq.com)
 - 掘金：[MiyueFE](https://juejin.cn/user/747323639208391)
 - 公众号：MiyueFE 的前端圈
 
+bpmn-js 相关文档，参见：
+
+- [bpmn-js 交流群附属资料(文档及开源库)](https://juejin.cn/post/7304831120710434868)
+- [bpmn.js 进阶指南](https://juejin.cn/column/6964382482007490590)
+
 ## 项目说明
 
-vue 2 + JavaScript + bpmn-js@8+ + element-ui 在本仓库 `main` 分支，是外面多数项目依赖的原始代码，问题较多。
+1. `vue 2 + JavaScript + bpmn-js@8+ + element-ui` 在本仓库 `main` 分支，是外面多数项目依赖的原始代码，问题较多。
 
-vue 2 + JavaScript + bpmn-js@9+ + element-ui 在本仓库 `v2` 分支，修改了少数样式，调整了数据交互逻辑。
+2. `vue 2 + JavaScript + bpmn-js@9+ + element-ui` 在本仓库 `v2` 分支，修改了少数样式，调整了数据交互逻辑。
 
-vue 3 + TypeScript + bpmn-js@13 + naive-ui 在 [moon-studio/vite-vue-bpmn-process](https://github.com/moon-studio/vite-vue-bpmn-process) 仓库，是 `v2` 的前身。
+3. `vue 3 + TypeScript + bpmn-js@13 + naive-ui` 在 [moon-studio/vite-vue-bpmn-process](https://github.com/moon-studio/vite-vue-bpmn-process) 仓库，是 `v2` 的前身。
 
-vue 3 + TypeScript + bpmn-js@17 + naive-ui 闭源项目 [vue-bpmn-process-designer](https://bpmn.miyuefe.cn) 完善了 TypeScript 类型声明部分，解决了撤销回退操作栈异常的问题，增加了垂直泳道、垂直布局、动态渲染等功能。
+4. `vue 3 + TypeScript + bpmn-js@17 + naive-ui` 闭源项目 [vue-bpmn-process-designer](https://bpmn.miyuefe.cn) 完善了 TypeScript 类型声明部分，解决了撤销回退操作栈异常的问题，增加了垂直泳道、垂直布局、动态渲染等功能。
 
 
 > 当前 `next` 分支作为 pnpm workplace 测试分支，与上述所有内容存在较大差异，加上工作问题，更新时间不定。
