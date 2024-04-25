@@ -1,9 +1,3 @@
-<p align="center">
-  <a href="https://github.com/miyuesc/bpmn-process-designer">
-   <img alt="logo" src="./public/icon-process.png" />
-  </a>
-</p>
-
 <h1 align="center">Bpmn Process Designer</h1>
 
 <p align="center">
