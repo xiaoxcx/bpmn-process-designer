@@ -88,6 +88,14 @@ importers:
         specifier: ^5.2.6
         version: 5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.4)
 
+  packages/modules:
+    dependencies:
+      bpmn-js-i18n-zh:
+        specifier: ^1.0.1
+        version: 1.0.1
+
+  packages/shared: {}
+
 packages:
 
   /@aashutoshrathi/word-wrap@1.2.6:
@@ -1229,6 +1237,11 @@ packages:
   /boolbase@1.0.0:
     resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
     dev: true
+
+  /bpmn-js-i18n-zh@1.0.1:
+    resolution: {integrity: sha512-ruftm6Gjk9PODMUErTkootS3s7S7XB//ZN171Ze4p/lAyKv4xREmLcPw/fMxwHwFSfI6o+LscgY7jaewaGG8JA==}
+    engines: {node: '>= 16'}
+    dev: false
 
   /bpmn-js@17.3.0:
     resolution: {integrity: sha512-LRwloZ+MoOl4YyOfXPgehifJ412o7LQcQmyrvtfn4bxnzQQfNDUBDnP0pmel4s0mfgEtIG0EFegOYxlBS19Uaw==}
