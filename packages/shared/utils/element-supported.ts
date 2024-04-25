@@ -55,10 +55,10 @@ export function isServiceTaskSupported(element: BpmnElement) {
   return is(element, 'bpmn:ServiceTask')
 }
 
-export function isDecisionTaskSupported(element: BpmnElement) {
-  return is(element, 'bpmn:ServiceTask') && getImplementationType(element) === 'dmn'
-}
-
 export function isCallActivitySupported(element: BpmnElement) {
   return is(element, 'bpmn:CallActivity')
+}
+
+export function isDecisionTaskSupported(element: BpmnElement) {
+  return is(element, 'bpmn:ServiceTask') && getImplementationType(element) === 'dmn'
 }

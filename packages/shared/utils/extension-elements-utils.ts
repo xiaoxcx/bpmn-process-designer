@@ -1,11 +1,8 @@
 import { is } from 'bpmn-js/lib/util/ModelUtil'
-import { createElement } from './element-utils'
-import { execPanelCommands, execPanelMultiCommands } from './commandsExecute'
+import { execSingleCommands } from './commands-execute'
+import { addExtensionElCommand } from '@shared/utils/commands-generator'
 import type Modeler from 'bpmn-js/lib/Modeler'
 
-/**
- * Get extension elements of business object. Optionally filter by type.
- */
 export function getExtensionElementsList(
   businessObject: BpmnModdleEl,
   type?: string
@@ -31,74 +28,22 @@ export function getExExtensionElementsList(
   return getExtensionElementsList(businessObject, `flowable:${type}`)
 }
 
-export function generateAddExtensionCommand(
-  modeler: Modeler,
-  element: BpmnElement,
-  businessObject: BpmnModdleEl,
-  extensionElementsToAdd: BpmnModdleEl | BpmnModdleEl[]
-): CommandContext[] {
-  if (!Array.isArray(extensionElementsToAdd)) {
-    extensionElementsToAdd = [extensionElementsToAdd]
-  }
-
-  return [
-    {
-      cmd: 'element.updateModdleProperties',
-      context: () => {
-        let extensionElements = businessObject.get('extensionElements')
-
-        if (extensionElements) {
-          for (const extensionElementToAdd of extensionElementsToAdd) {
-            extensionElementToAdd.$parent = extensionElements
-          }
-          return {
-            element,
-            moddleElement: extensionElements,
-            properties: {
-              values: [...extensionElements.get('values'), ...extensionElementsToAdd]
-            }
-          }
-        }
-
-        extensionElements = createElement(
-          modeler,
-          'bpmn:ExtensionElements',
-          { values: extensionElementsToAdd },
-          businessObject
-        )
-        for (const extensionElementToAdd of extensionElementsToAdd) {
-          extensionElementToAdd.$parent = extensionElements
-        }
-
-        return {
-          element,
-          moddleElement: businessObject,
-          properties: { extensionElements }
-        }
-      }
-    }
-  ]
-}
-
 export function addExtensionElements(
   modeler: Modeler,
   element: BpmnElement,
   businessObject: BpmnModdleEl,
   extensionElementsToAdd: BpmnModdleEl | BpmnModdleEl[]
 ) {
-  const commands: CommandContext[] = generateAddExtensionCommand(
+  const command: CommandContext = addExtensionElCommand(
     modeler,
     element,
     businessObject,
     extensionElementsToAdd
   )
 
-  execPanelMultiCommands(modeler, commands)
+  execSingleCommands(modeler, command)
 }
 
-/**
- * Remove one or more extension elements. Remove bpmn:ExtensionElements afterwards if it's empty.
- */
 export function removeExtensionElements(
   modeler: Modeler,
   element: BpmnElement,
@@ -114,7 +59,7 @@ export function removeExtensionElements(
       .get('values')
       .filter((value) => !extensionElementsToRemove.includes(value))
 
-  execPanelCommands(modeler, {
+  execSingleCommands(modeler, {
     element,
     moddleElement: extensionElements,
     properties: { values }

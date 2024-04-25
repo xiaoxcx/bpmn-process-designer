@@ -2,6 +2,7 @@ import { isAny } from 'bpmn-js/lib/features/modeling/util/ModelingUtil'
 import { getBusinessObject, is } from 'bpmn-js/lib/util/ModelUtil'
 import { getImplementationType } from './implementation-type-utils'
 
+/************* 判断函数 ************/
 export function isErrorSupported(element: BpmnElement | BpmnModdleEl): boolean {
   return (
     isAny(element, ['bpmn:StartEvent', 'bpmn:BoundaryEvent', 'bpmn:EndEvent']) &&
@@ -56,15 +57,23 @@ export function isServiceErrorsSupported(element: BpmnElement): boolean {
   return is(element, 'bpmn:ServiceTask') && getImplementationType(element) === 'external'
 }
 
+export function canHaveEventVariables(element: BpmnElement): boolean {
+  return is(element, 'bpmn:StartEvent') || is(element, 'bpmn:BoundaryEvent')
+}
+
+/************* 值获取函数 ************/
 export function getErrorEventDefinition(
   element: BpmnElement | BpmnModdleEl
 ): BpmnModdleEl | undefined {
   return getEventDefinition(element, 'bpmn:ErrorEventDefinition')
 }
 
-/**
- * Get the timer definition type for a given timer event definition.
- */
+export function getError(element: BpmnElement | BpmnModdleEl): BpmnModdleEl | undefined {
+  const errorEventDefinition = getErrorEventDefinition(element)
+
+  return errorEventDefinition && errorEventDefinition.get('errorRef')
+}
+
 export function getTimerDefinitionType(timer?: BpmnModdleEl): string | undefined {
   if (!timer) {
     return
@@ -88,12 +97,6 @@ export function getTimerDefinitionType(timer?: BpmnModdleEl): string | undefined
 
 export function getTimerEventDefinition(element: BpmnElement | BpmnModdleEl) {
   return getEventDefinition(element, 'bpmn:TimerEventDefinition')
-}
-
-export function getError(element: BpmnElement | BpmnModdleEl): BpmnModdleEl | undefined {
-  const errorEventDefinition = getErrorEventDefinition(element)
-
-  return errorEventDefinition && errorEventDefinition.get('errorRef')
 }
 
 export function getEventDefinition(
@@ -165,8 +168,4 @@ export function getCompensateActivity(
   const compensateEventDefinition = getCompensateEventDefinition(element)
 
   return compensateEventDefinition && compensateEventDefinition.get('activityRef')
-}
-
-export function canHaveEventVariables(element: BpmnElement): boolean {
-  return is(element, 'bpmn:StartEvent') || is(element, 'bpmn:BoundaryEvent')
 }
