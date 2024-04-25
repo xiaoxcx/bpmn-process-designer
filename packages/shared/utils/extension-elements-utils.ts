@@ -21,13 +21,6 @@ export function getExtensionElementsList(
   return values
 }
 
-export function getExExtensionElementsList(
-  businessObject: BpmnModdleEl,
-  type?: string
-): BpmnModdleEl[] {
-  return getExtensionElementsList(businessObject, `flowable:${type}`)
-}
-
 export function addExtensionElements(
   modeler: Modeler,
   element: BpmnElement,
