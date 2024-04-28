@@ -13,6 +13,7 @@
   },
   "private": true,
   "dependencies": {
-    "bpmn-js-i18n-zh": "^1.0.1"
+    "bpmn-js-i18n-zh": "^1.0.1",
+    "diagram-js-grid-bg": "^1.1.0"
   }
 }

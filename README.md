@@ -34,7 +34,7 @@ bpmn-js 相关文档，参见：
 
 3. `vue 3 + TypeScript + bpmn-js@13 + naive-ui` 在 [moon-studio/vite-vue-bpmn-process](https://github.com/moon-studio/vite-vue-bpmn-process) 仓库，是 `v2` 的前身。
 
-4. `vue 3 + TypeScript + bpmn-js@17 + naive-ui` 闭源项目 [vue-bpmn-process-designer](https://bpmn.miyuefe.cn) 完善了 TypeScript 类型声明部分，解决了撤销回退操作栈异常的问题，增加了垂直泳道、垂直布局、动态渲染等功能。
+4. `vue 3 + TypeScript + bpmn-js@17 + naive-ui` **闭源** 项目 [vue-bpmn-process-designer](https://bpmn.miyuefe.cn) 完善了 TypeScript 类型声明部分，解决了撤销回退操作栈异常的问题，增加了垂直泳道、垂直布局、动态渲染等功能。
 
 
 > 当前 `next` 分支作为 pnpm workplace 测试分支，与上述所有内容存在较大差异，加上工作问题，更新时间不定。
