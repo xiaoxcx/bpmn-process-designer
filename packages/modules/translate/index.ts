@@ -1,4 +1,4 @@
-import ZhCnTranslate from './ZhCnTranslate'
+import ZhCnTranslate from './zh-cn-translator'
 
 const Translates = [
   {

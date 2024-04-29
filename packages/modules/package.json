@@ -13,7 +13,9 @@
   },
   "private": true,
   "dependencies": {
+    "bpmn-js-bpmnlint": "^0.22.2",
     "bpmn-js-i18n-zh": "^1.0.1",
+    "bpmnlint": "^10.2.1",
     "diagram-js-grid-bg": "^1.1.0"
   }
 }

@@ -1,5 +1,5 @@
-import CommandInitializer from './CommandInitializer'
-import MultiCommandInterceptor from './MultiCommandInterceptor'
+import CommandInitializer from './command-initializer'
+import MultiCommandInterceptor from './multi-command-interceptor'
 
 const CustomCmd = {
   __init__: ['commandInitializer', 'multiCommandInterceptor'],

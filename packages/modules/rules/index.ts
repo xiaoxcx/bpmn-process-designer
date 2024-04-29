@@ -1,4 +1,4 @@
-import CustomRules from './CustomRules'
+import CustomRules from './custom-rules'
 
 export default {
   bpmnRules: ['type', CustomRules]
