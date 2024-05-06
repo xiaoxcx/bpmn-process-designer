@@ -4,7 +4,7 @@ import type { CommandHandlerConstructor } from 'diagram-js/lib/command/CommandSt
 import MultiCommandHandler from './multi-command-handler'
 
 const HANDLERS: Record<string, CommandHandlerConstructor> = {
-  'panel.multi-command': MultiCommandHandler
+  'multi-commands': MultiCommandHandler
 }
 
 class CommandInitializer {

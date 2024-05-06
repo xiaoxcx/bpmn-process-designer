@@ -14,7 +14,7 @@ import singleBlankStartEvent from 'bpmnlint/rules/single-blank-start-event'
 import singleEventDefinition from 'bpmnlint/rules/single-event-definition'
 import startEventRequired from 'bpmnlint/rules/start-event-required'
 import subProcessBlankStartEvent from 'bpmnlint/rules/sub-process-blank-start-event'
-import superFluousGateway from 'bpmnlint/rules/superfluous-gateway'
+import superfluousGateway from 'bpmnlint/rules/superfluous-gateway'
 
 export type LintRuleName = string
 export type CacheLintRuleName = `bpmnlint/${LintRuleName}`
@@ -66,26 +66,5 @@ export const rulesCache: Record<CacheLintRuleName, LintRuleLinter> = {
   'bpmnlint/single-event-definition': singleEventDefinition,
   'bpmnlint/start-event-required': startEventRequired,
   'bpmnlint/sub-process-blank-start-event': subProcessBlankStartEvent,
-  'bpmnlint/superfluous-gateway': superFluousGateway
-}
-
-function Resolver() {}
-
-Resolver.prototype.resolveRule = function (pkg: string, ruleName: string) {
-  const rule = rulesCache[pkg + '/' + ruleName]
-
-  if (!rule) {
-    throw new Error('cannot resolve rule <' + pkg + '/' + ruleName + '>')
-  }
-
-  return rule
-}
-
-Resolver.prototype.resolveConfig = function (pkg: string, configName: string) {
-  throw new Error('cannot resolve config <' + configName + '> in <' + pkg + '>')
-}
-
-export default {
-  resolver: new Resolver(),
-  config: { rules }
+  'bpmnlint/superfluous-gateway': superfluousGateway
 }
