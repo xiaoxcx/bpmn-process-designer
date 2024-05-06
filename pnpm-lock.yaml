@@ -88,11 +88,20 @@ importers:
         specifier: ^5.2.6
         version: 5.2.10(@types/node@20.12.7)(sass@1.75.0)(terser@5.30.4)
 
+  examples/app:
+    dependencies:
+      '@miyue-bpmn/modules':
+        specifier: workspace:^
+        version: link:../../packages/modules
+
   packages/modules:
     dependencies:
       bpmn-js-bpmnlint:
         specifier: ^0.22.2
         version: 0.22.2(bpmn-js@17.3.0)(bpmnlint@10.2.1)(diagram-js@14.4.0)
+      bpmn-js-create-append-anything:
+        specifier: ^0.5.1
+        version: 0.5.1(bpmn-js@17.3.0)(diagram-js@14.4.0)
       bpmn-js-i18n-zh:
         specifier: ^1.0.1
         version: 1.0.1
@@ -420,6 +429,16 @@ packages:
     dependencies:
       htm: 3.1.1
       preact: 10.20.2
+
+  /@bpmn-io/element-template-chooser@1.0.0(bpmn-js@17.3.0)(diagram-js@14.4.0):
+    resolution: {integrity: sha512-jSzvoWwYiTpsR7X/+nhao8e8jfveTPLeT3cUUJYhcztLysJaJo+5VXX+QbzH4eFOCnqaoIz6ehbd8px4EjVYnA==}
+    peerDependencies:
+      bpmn-js: '>= 11'
+      diagram-js: '>= 11.3.0'
+    dependencies:
+      bpmn-js: 17.3.0
+      diagram-js: 14.4.0
+    dev: false
 
   /@bpmn-io/moddle-utils@0.2.1:
     resolution: {integrity: sha512-iv9zwk7PEGupSq9bkVZNFL0ZmoJLHExlUcjsiYx200Nh3a5mH9BHXF+PLaSaiE4882KVEirklpWf3oQLAmShSA==}
@@ -1270,6 +1289,15 @@ packages:
       diagram-js: 14.4.0
       min-dash: 4.2.1
       min-dom: 4.1.0
+    dev: false
+
+  /bpmn-js-create-append-anything@0.5.1(bpmn-js@17.3.0)(diagram-js@14.4.0):
+    resolution: {integrity: sha512-WvDCHiDCMd7XZUkAsgVRw2AohOGkXozvn+K4DiDHicuD5vixg1AI+Rz39KnnF9Wp4qpPyEy7zty8gl3uEhbwPg==}
+    dependencies:
+      '@bpmn-io/element-template-chooser': 1.0.0(bpmn-js@17.3.0)(diagram-js@14.4.0)
+    transitivePeerDependencies:
+      - bpmn-js
+      - diagram-js
     dev: false
 
   /bpmn-js-i18n-zh@1.0.1:
