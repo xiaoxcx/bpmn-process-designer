@@ -1,20 +1,34 @@
-<script setup>
-  import { CREATE_OPTIONS } from '@miyue-bpmn/modules/palette/PaletteProvider'
+<script lang="ts" setup>
+  import { onMounted, ref } from 'vue'
+  import Modeler from 'bpmn-js/lib/Modeler'
+  import additionalModules from '@miyue-bpmn/modules'
 
-  console.log(CREATE_OPTIONS)
+  const container = ref<HTMLDivElement>()
+
+  onMounted(() => {
+    const modeler = new Modeler({
+      container: container.value!,
+      additionalModules
+    })
+
+    modeler.createDiagram()
+  })
 </script>
 
 <template>
-  <div id="pages-app"> </div>
+  <div ref="container" class="container"></div>
 </template>
 
 <style>
-  #pages-app {
+  html,
+  body {
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .container {
+    width: 100%;
     height: 100%;
-    font-family: 'Hannotate SC';
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
   }
 </style>

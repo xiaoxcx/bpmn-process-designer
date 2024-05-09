@@ -6,15 +6,17 @@ import CustomCmd from './cmd'
 import CustomRules from './rules'
 import Translate from './translate'
 import BpmnLintModule from './lint'
+import PaletteModule from './palette'
 
-const allModules = [CustomCmd, CustomRules, Translate, GridModule, BpmnLintModule]
+const allModules = [CustomCmd, CustomRules, Translate, GridModule, BpmnLintModule, PaletteModule]
 
 const allModulesMap = {
   multiCommands: CustomCmd,
   rules: CustomRules,
   translate: Translate,
   gridBackground: GridModule,
-  bpmnLint: BpmnLintModule
+  bpmnLint: BpmnLintModule,
+  palette: PaletteModule,
 } as const
 
 export type ModuleName = keyof typeof allModulesMap
