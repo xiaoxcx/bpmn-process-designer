@@ -24,49 +24,28 @@
  * source: https://github.com/bpmn-io/bpmn-js-create-append-anything/blob/main/lib/util/CreateOptionsUtil.js
  */
 
-export type BaseOptionGroup = {
-  id: string
-  name: string
-}
-export type BaseCreateOption = {
-  group: BaseOptionGroup
+export type BaseCreateOption<T extends string> = {
   label: string
-  actionName: string
+  actionName: T
   className: string
-  target: { type: string }
+  target: {
+    type: string
+    eventDefinitionType?: string
+    eventGatewayType?: string
+    eventDefinitionAttrs?: unknown
+    cancelActivity?: boolean
+    instantiate?: boolean
+    isExpanded?: boolean
+    triggeredByEvent?: boolean
+  }
 }
 
-export const EVENT_GROUP: BaseOptionGroup = {
-  id: 'events',
-  name: 'Events'
-}
-
-export const TASK_GROUP: BaseOptionGroup = {
-  id: 'tasks',
-  name: 'Tasks'
-}
-
-export const DATA_GROUP: BaseOptionGroup = {
-  id: 'data',
-  name: 'Data'
-}
-
-export const PARTICIPANT_GROUP: BaseOptionGroup = {
-  id: 'participants',
-  name: 'Participants'
-}
-
-export const SUBPROCESS_GROUP: BaseOptionGroup = {
-  id: 'subprocess',
-  name: 'Sub-processes'
-}
-
-export const GATEWAY_GROUP: BaseOptionGroup = {
-  id: 'gateways',
-  name: 'Gateways'
-}
-
-export const NONE_EVENTS: BaseCreateOption[] = [
+export type NoneEvent =
+  | 'none-start-event'
+  | 'none-intermediate-throwing'
+  | 'none-boundary-event'
+  | 'none-end-event'
+export const NONE_EVENTS: BaseCreateOption<NoneEvent>[] = [
   {
     label: 'Start event',
     actionName: 'none-start-event',
@@ -99,9 +78,10 @@ export const NONE_EVENTS: BaseCreateOption[] = [
       type: 'bpmn:EndEvent'
     }
   }
-].map((option) => ({ ...option, group: EVENT_GROUP }))
+]
 
-export const TYPED_START_EVENTS: BaseCreateOption[] = [
+export type TypedStartEvent = 'message-start' | 'timer-start' | 'conditional-start' | 'signal-start'
+export const TYPED_START_EVENTS: BaseCreateOption<TypedStartEvent>[] = [
   {
     label: 'Message start event',
     actionName: 'message-start',
@@ -138,9 +118,20 @@ export const TYPED_START_EVENTS: BaseCreateOption[] = [
       eventDefinitionType: 'bpmn:SignalEventDefinition'
     }
   }
-].map((option) => ({ ...option, group: EVENT_GROUP }))
+]
 
-export const TYPED_INTERMEDIATE_EVENT: BaseCreateOption[] = [
+export type TypedIntermediateEvent =
+  | 'message-intermediate-catch'
+  | 'message-intermediate-throw'
+  | 'timer-intermediate-catch'
+  | 'escalation-intermediate-throw'
+  | 'conditional-intermediate-catch'
+  | 'link-intermediate-catch'
+  | 'link-intermediate-throw'
+  | 'compensation-intermediate-throw'
+  | 'signal-intermediate-catch'
+  | 'signal-intermediate-throw'
+export const TYPED_INTERMEDIATE_EVENT: BaseCreateOption<TypedIntermediateEvent>[] = [
   {
     label: 'Message intermediate catch event',
     actionName: 'message-intermediate-catch',
@@ -237,9 +228,23 @@ export const TYPED_INTERMEDIATE_EVENT: BaseCreateOption[] = [
       eventDefinitionType: 'bpmn:SignalEventDefinition'
     }
   }
-].map((option) => ({ ...option, group: EVENT_GROUP }))
+]
 
-export const TYPED_BOUNDARY_EVENT: BaseCreateOption[] = [
+export type TypedBoundaryEvent =
+  | 'message-boundary'
+  | 'timer-boundary'
+  | 'escalation-boundary'
+  | 'conditional-boundary'
+  | 'error-boundary'
+  | 'cancel-boundary'
+  | 'signal-boundary'
+  | 'compensation-boundary'
+  | 'non-interrupting-message-boundary'
+  | 'non-interrupting-timer-boundary'
+  | 'non-interrupting-escalation-boundary'
+  | 'non-interrupting-conditional-boundary'
+  | 'non-interrupting-signal-boundary'
+export const TYPED_BOUNDARY_EVENT: BaseCreateOption<TypedBoundaryEvent>[] = [
   {
     label: 'Message boundary event',
     actionName: 'message-boundary',
@@ -362,9 +367,17 @@ export const TYPED_BOUNDARY_EVENT: BaseCreateOption[] = [
       cancelActivity: false
     }
   }
-].map((option) => ({ ...option, group: EVENT_GROUP }))
+]
 
-export const TYPED_END_EVENT: BaseCreateOption[] = [
+export type TypedEndEvent =
+  | 'message-end'
+  | 'escalation-end'
+  | 'error-end'
+  | 'cancel-end'
+  | 'compensation-end'
+  | 'signal-end'
+  | 'terminate-end'
+export const TYPED_END_EVENT: BaseCreateOption<TypedEndEvent>[] = [
   {
     label: 'Message end event',
     actionName: 'message-end',
@@ -428,9 +441,15 @@ export const TYPED_END_EVENT: BaseCreateOption[] = [
       eventDefinitionType: 'bpmn:TerminateEventDefinition'
     }
   }
-].map((option) => ({ ...option, group: EVENT_GROUP }))
+]
 
-export const GATEWAY: BaseCreateOption[] = [
+export type Gateway =
+  | 'exclusive-gateway'
+  | 'parallel-gateway'
+  | 'inclusive-gateway'
+  | 'complex-gateway'
+  | 'event-based-gateway'
+export const GATEWAY: BaseCreateOption<Gateway>[] = [
   {
     label: 'Exclusive gateway',
     actionName: 'exclusive-gateway',
@@ -449,13 +468,11 @@ export const GATEWAY: BaseCreateOption[] = [
   },
   {
     label: 'Inclusive gateway',
-    search: 'or',
     actionName: 'inclusive-gateway',
     className: 'bpmn-icon-gateway-or',
     target: {
       type: 'bpmn:InclusiveGateway'
-    },
-    rank: -1
+    }
   },
   {
     label: 'Complex gateway',
@@ -463,8 +480,7 @@ export const GATEWAY: BaseCreateOption[] = [
     className: 'bpmn-icon-gateway-complex',
     target: {
       type: 'bpmn:ComplexGateway'
-    },
-    rank: -1
+    }
   },
   {
     label: 'Event-based gateway',
@@ -476,9 +492,15 @@ export const GATEWAY: BaseCreateOption[] = [
       eventGatewayType: 'Exclusive'
     }
   }
-].map((option) => ({ ...option, group: GATEWAY_GROUP }))
+]
 
-export const SUBPROCESS: BaseCreateOption[] = [
+export type SubProcess =
+  | 'call-activity'
+  | 'transaction'
+  | 'event-subprocess'
+  | 'collapsed-subprocess'
+  | 'expanded-subprocess'
+export const SUBPROCESS: BaseCreateOption<SubProcess>[] = [
   {
     label: 'Call activity',
     actionName: 'call-activity',
@@ -524,9 +546,18 @@ export const SUBPROCESS: BaseCreateOption[] = [
       isExpanded: true
     }
   }
-].map((option) => ({ ...option, group: SUBPROCESS_GROUP }))
+]
 
-export const TASK: BaseCreateOption[] = [
+export type Task =
+  | 'task'
+  | 'user-task'
+  | 'service-task'
+  | 'send-task'
+  | 'receive-task'
+  | 'manual-task'
+  | 'rule-task'
+  | 'script-task'
+export const TASK: BaseCreateOption<Task>[] = [
   {
     label: 'Task',
     actionName: 'task',
@@ -557,8 +588,7 @@ export const TASK: BaseCreateOption[] = [
     className: 'bpmn-icon-send',
     target: {
       type: 'bpmn:SendTask'
-    },
-    rank: -1
+    }
   },
   {
     label: 'Receive task',
@@ -566,8 +596,7 @@ export const TASK: BaseCreateOption[] = [
     className: 'bpmn-icon-receive',
     target: {
       type: 'bpmn:ReceiveTask'
-    },
-    rank: -1
+    }
   },
   {
     label: 'Manual task',
@@ -575,8 +604,7 @@ export const TASK: BaseCreateOption[] = [
     className: 'bpmn-icon-manual',
     target: {
       type: 'bpmn:ManualTask'
-    },
-    rank: -1
+    }
   },
   {
     label: 'Business rule task',
@@ -594,9 +622,10 @@ export const TASK: BaseCreateOption[] = [
       type: 'bpmn:ScriptTask'
     }
   }
-].map((option) => ({ ...option, group: TASK_GROUP }))
+]
 
-export const DATA_OBJECTS: BaseCreateOption[] = [
+export type DataObject = 'data-store-reference' | 'data-object-reference'
+export const DATA_OBJECTS: BaseCreateOption<DataObject>[] = [
   {
     label: 'Data store reference',
     actionName: 'data-store-reference',
@@ -613,12 +642,12 @@ export const DATA_OBJECTS: BaseCreateOption[] = [
       type: 'bpmn:DataObjectReference'
     }
   }
-].map((option) => ({ ...option, group: DATA_GROUP }))
+]
 
-export const PARTICIPANT: BaseCreateOption[] = [
+export type Participant = 'expanded-pool' | 'collapsed-pool'
+export const PARTICIPANT: BaseCreateOption<Participant>[] = [
   {
     label: 'Expanded pool/participant',
-    search: 'Non-empty pool/participant',
     actionName: 'expanded-pool',
     className: 'bpmn-icon-participant',
     target: {
@@ -628,7 +657,6 @@ export const PARTICIPANT: BaseCreateOption[] = [
   },
   {
     label: 'Empty pool/participant',
-    search: 'Collapsed pool/participant',
     actionName: 'collapsed-pool',
     className: 'bpmn-icon-lane',
     target: {
@@ -636,9 +664,20 @@ export const PARTICIPANT: BaseCreateOption[] = [
       isExpanded: false
     }
   }
-].map((option) => ({ ...option, group: PARTICIPANT_GROUP }))
+]
 
-export const CREATE_OPTIONS: BaseCreateOption[] = [
+export type CreateOptionType =
+  | NoneEvent
+  | TypedStartEvent
+  | TypedIntermediateEvent
+  | TypedBoundaryEvent
+  | TypedEndEvent
+  | Gateway
+  | SubProcess
+  | Task
+  | DataObject
+  | Participant
+export const CREATE_OPTIONS: BaseCreateOption<CreateOptionType>[] = [
   ...GATEWAY,
   ...TASK,
   ...SUBPROCESS,
@@ -650,3 +689,5 @@ export const CREATE_OPTIONS: BaseCreateOption[] = [
   ...DATA_OBJECTS,
   ...PARTICIPANT
 ]
+
+export const ALL_CREATE_ACTION_NAMES = CREATE_OPTIONS.map((op) => op.actionName)

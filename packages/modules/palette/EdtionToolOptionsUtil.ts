@@ -1,14 +1,16 @@
-export type ToolModuleName = 'handTool' | 'lassoTool' | 'spaceTool' | 'globalConnect'
+import { CamelCase } from '@shared/types/string'
 
-export type BaseToolOption = {
+export type ToolModuleName = 'hand' | 'lasso' | 'space' | 'global-connect'
+
+export type BaseToolOption<T extends string> = {
   label: string
-  actionName: string
+  actionName: T
   className: string
-  moduleName: ToolModuleName
+  moduleName: `${CamelCase<T>}Tool`
   methodName: string
 }
 
-export const TOOLS_OPTIONS: BaseToolOption[] = [
+export const TOOLS_OPTIONS: BaseToolOption<ToolModuleName>[] = [
   {
     label: 'Activate hand tool',
     actionName: 'hand',
@@ -34,7 +36,9 @@ export const TOOLS_OPTIONS: BaseToolOption[] = [
     label: 'Activate global connect tool',
     actionName: 'global-connect',
     className: 'bpmn-icon-connection-multi',
-    moduleName: 'globalConnect',
+    moduleName: 'globalConnectTool',
     methodName: 'start'
   }
 ]
+
+export const ALL_TOOL_ACTION_NAMES = TOOLS_OPTIONS.map((op) => op.actionName)

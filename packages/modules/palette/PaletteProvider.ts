@@ -7,7 +7,7 @@ import type HandTool from 'diagram-js/lib/features/hand-tool/HandTool'
 import type GlobalConnect from 'diagram-js/lib/features/global-connect/GlobalConnect'
 import Translate from 'diagram-js/lib/i18n/translate/translate'
 
-import { CREATE_OPTIONS, type BaseCreateOption } from './CreateOptionsUtil'
+import { CREATE_OPTIONS, type BaseCreateOption, type CreateOptionType } from './CreateOptionsUtil'
 import { TOOLS_OPTIONS, type BaseToolOption, type ToolModuleName } from './EdtionToolOptionsUtil'
 
 const injects = [
@@ -23,9 +23,9 @@ const injects = [
 ] as const
 
 export type PaletteEntriesConfig = {
-  tools?: ToolModuleName[]
-  elements?: Array<BaseCreateOption['actionName'] | 'separator'>
-  customElements?: BaseCreateOption[]
+  tools?: Array<ToolModuleName | 'separator'>
+  elements?: Array<CreateOptionType | 'separator'>
+  customElements?: Array<BaseCreateOption<string> | 'separator'>
 }
 
 class PaletteProvider {
@@ -40,6 +40,8 @@ class PaletteProvider {
   private _handTool: HandTool
   private _globalConnect: GlobalConnect
   private _translate: typeof Translate
+  private _toolOptionsMap: {}
+  private _createOptionsMap: {}
 
   constructor(
     config: PaletteEntriesConfig,
@@ -62,48 +64,102 @@ class PaletteProvider {
     this._globalConnect = globalConnect
     this._translate = translate
 
+    this._toolOptionsMap = TOOLS_OPTIONS.reduce((m, cur) => (m[cur.actionName] = cur) && m, {})
+    this._createOptionsMap = CREATE_OPTIONS.reduce((m, cur) => (m[cur.actionName] = cur) && m, {})
+
     palette.registerProvider(this)
   }
 
   getPaletteEntries() {
     const entries = {}
     const { tools = [], elements = [], customElements = [] } = this._config
+    let idx: number = 0
 
-    TOOLS_OPTIONS.forEach((option) => {
-      const { actionName, className, label, methodName, moduleName } = option
+    if (tools.length) {
+      for (const tool of tools) {
+        if (this._toolOptionsMap[tool]) {
+          const { actionName, className, label, methodName, moduleName } =
+            this._toolOptionsMap[tool]
 
-      const targetAction = this._createToolAction(moduleName, methodName)
+          const targetAction = this._createToolAction(moduleName, methodName)
 
-      entries[`${actionName}-tool`] = {
-        label: label && this._translate(label),
-        className,
-        group: 'tools',
-        action: {
-          click: targetAction
+          entries[`${actionName}-tool`] = {
+            label: label && this._translate(label),
+            className,
+            group: 'tools',
+            action: {
+              click: targetAction
+            }
+          }
         }
       }
-    })
+      entries['tools-separator'] = this._createSeparator('tools')
+    }
 
-    CREATE_OPTIONS.forEach((option) => {
-      const { actionName, className, label, target, group } = option
+    if (elements.length) {
+      for (const element of elements) {
+        if (element === 'separator') {
+          entries[`${idx}-separator`] = this._createSeparator(idx.toString())
+          idx++
+          continue
+        }
+        if (this._createOptionsMap[element]) {
+          const { actionName, className, label, target } = this._createOptionsMap[element]
 
-      const targetAction = this._createEntryAction(target)
+          const targetAction = this._createEntryAction(target)
 
-      entries[`${actionName}-create`] = {
-        label: label && this._translate(label),
-        className,
-        group: group.id,
-        action: {
-          click: targetAction,
-          dragstart: targetAction
+          entries[`${actionName}-create`] = {
+            label: label && this._translate(label),
+            className,
+            group: idx,
+            action: {
+              click: targetAction,
+              dragstart: targetAction
+            }
+          }
         }
       }
-    })
+    }
+
+    if (customElements.length) {
+      for (const customElement of customElements) {
+        if (customElement === 'separator') {
+          entries[`${idx}-separator`] = this._createSeparator(idx.toString())
+          idx++
+          continue
+        }
+
+        const { actionName, className, label, target } = customElement
+
+        const targetAction = this._createEntryAction(target)
+
+        entries[`${actionName}-create`] = {
+          label: label && this._translate(label),
+          className,
+          group: idx,
+          action: {
+            click: targetAction,
+            dragstart: targetAction
+          }
+        }
+      }
+    }
 
     return entries
   }
 
-  _createEntryAction(target: BaseCreateOption['target']) {
+  _getToolModule(toolName: ToolModuleName) {
+    return this[`_${toolName}`]
+  }
+
+  _createSeparator(group: string) {
+    return {
+      group,
+      separator: true
+    }
+  }
+
+  _createEntryAction(target: BaseCreateOption<string>['target']) {
     const create = this._create
     const elementFactory = this._elementFactory
 
@@ -120,13 +176,9 @@ class PaletteProvider {
     }
   }
 
-  _getToolModule(toolName: ToolModuleName) {
-    return this[`_${toolName}`]
-  }
-
   _createToolAction(
-    moduleName: BaseToolOption['moduleName'],
-    methodName: BaseToolOption['methodName']
+    moduleName: ToolModuleName,
+    methodName: BaseToolOption<ToolModuleName>['methodName']
   ) {
     const module = this._getToolModule(moduleName)
     return (event: MouseEvent) => {

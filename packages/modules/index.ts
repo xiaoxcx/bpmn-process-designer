@@ -16,7 +16,7 @@ const allModulesMap = {
   translate: Translate,
   gridBackground: GridModule,
   bpmnLint: BpmnLintModule,
-  palette: PaletteModule,
+  palette: PaletteModule
 } as const
 
 export type ModuleName = keyof typeof allModulesMap
