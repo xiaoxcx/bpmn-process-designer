@@ -1,7 +1,15 @@
 import type Modeler from 'bpmn-js/lib/Modeler'
-import { createElement } from '@shared/utils/element-utils'
+import { createElement, getBusinessObject } from '@shared/utils/element-utils'
 import { getExtensionElementsList } from '@shared/utils/extension-elements-utils'
+import { is } from 'bpmn-js/lib/util/ModelUtil'
 
+/**
+ * 单独设置某个指定对象属性的一个属性
+ * @param element
+ * @param moddleElement
+ * @param type
+ * @param value
+ */
 export const setModdleProperty = (
   element: BpmnElement,
   moddleElement: BpmnModdleEl,
@@ -14,6 +22,12 @@ export const setModdleProperty = (
     context: { element, moddleElement, properties }
   }
 }
+/**
+ * 更新指定对象属性的多个属性
+ * @param element
+ * @param moddleElement
+ * @param properties
+ */
 export const setModdleProperties = (
   element: BpmnElement,
   moddleElement: BpmnModdleEl,
@@ -25,32 +39,38 @@ export const setModdleProperties = (
   }
 }
 
+/**
+ * 直接设置 businessObject 的单个属性
+ * @param element
+ * @param type
+ * @param value
+ */
 export const setBoProperty = (
   element: BpmnElement,
   type: string,
   value?: unknown
 ): CommandContext => {
-  const properties = { [type]: value }
-  return {
-    cmd: 'element.updateModdleProperties',
-    context: { element, moddleElement: element.businessObject, properties }
-  }
+  return setModdleProperty(element, getBusinessObject(element), type, value)
 }
+/**
+ * 直接设置 businessObject 的多个属性
+ * @param element
+ * @param properties
+ */
 export const setBoProperties = (
   element: BpmnElement,
-  type: string,
   properties: Record<string, any>
 ): CommandContext => {
-  return {
-    cmd: 'element.updateModdleProperties',
-    context: {
-      element,
-      moddleElement: element.businessObject,
-      properties
-    }
-  }
+  return setModdleProperties(element, getBusinessObject(element), properties)
 }
 
+/**
+ * 添加扩展属性
+ * @param modeler
+ * @param element
+ * @param businessObject
+ * @param extensionElementsToAdd
+ */
 export const addExtensionElCommand = (
   modeler: Modeler,
   element: BpmnElement,
@@ -98,6 +118,13 @@ export const addExtensionElCommand = (
   }
 }
 
+/**
+ * 直接设置某个类型的扩展元素的 body 属性
+ * @param modeler
+ * @param element
+ * @param type
+ * @param body
+ */
 export const setExtensionItemBodyCommand = (
   modeler: Modeler,
   element: BpmnElement,

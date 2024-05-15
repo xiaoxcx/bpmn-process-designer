@@ -10,6 +10,17 @@ export function nextId(prefix: string): string {
   return ids.nextPrefixed(`${prefix}_`)
 }
 
+export function getBusinessObject(element: BpmnElement): BpmnModdleEl {
+  let businessObject = element.get('businessObject')
+
+  // 存在泳池时，默认 "Collaboration" 节点替换为 "Process" 节点
+  if (is(element, 'bpmn:Collaboration')) {
+    businessObject = element.children[0].businessObject.processRef
+  }
+
+  return businessObject
+}
+
 export function getRoot(businessObject: BpmnModdleEl): BpmnRoot {
   let parent = businessObject
 

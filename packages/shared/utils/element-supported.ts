@@ -11,6 +11,7 @@ export const LISTENER_ALLOWED_TYPES = [
   'bpmn:Process',
   'bpmn:Participant'
 ]
+/************************* 多实例 ************************/
 export const MULTI_INSTANCE_ALLOWED_TYPES = [
   'bpmn:UserTask',
   'bpmn:ScriptTask',
@@ -25,13 +26,14 @@ export const MULTI_INSTANCE_ALLOWED_TYPES = [
   'bpmn:CallActivity'
 ]
 
+// 可否配置多实例
 export function isMultiInstanceSupported(element: BpmnElement) {
   if (isAny(element, MULTI_INSTANCE_ALLOWED_TYPES)) {
     return !(is(element, 'bpmn:Participant') && !element.businessObject.processRef)
   }
   return false
 }
-
+// 可否配置执行监听器
 export function isExecutionListenerSupported(element: BpmnElement) {
   if (isAny(element, LISTENER_ALLOWED_TYPES)) {
     return !(
@@ -42,7 +44,7 @@ export function isExecutionListenerSupported(element: BpmnElement) {
   }
   return false
 }
-
+// 可否配置任务监听器
 export function isUserTaskSupported(element: BpmnElement) {
   return is(element, 'bpmn:UserTask')
 }

@@ -4,7 +4,7 @@ import type Modeler from 'bpmn-js/lib/Modeler'
 export function execMultiCommands(modeler: Modeler, commands: Array<CommandContext | undefined>) {
   try {
     const commandStack = modeler!.get<CommandStack>('commandStack')
-    commandStack.execute('panel.multi-command', commands)
+    commandStack.execute('multi-commands', commands)
   } catch (e) {
     console.error('Properties update error.')
     console.error(e)
