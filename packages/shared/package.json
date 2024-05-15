@@ -2,14 +2,15 @@
   "name": "@miyue-bpmn/shared",
   "version": "1.0.0",
   "description": "",
-  "files": ["hooks", "utils", "types"],
+  "main": "index.ts",
+  "types": "index.ts",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": ["hooks", "utils", "types"],
   "repository": {
     "type": "git",
     "url": "https://github.com/miyuesc/bpmn-process-designer.git"
-  },
-  "private": true
+  }
 }
