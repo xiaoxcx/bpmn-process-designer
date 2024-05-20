@@ -65,4 +65,6 @@ bpmn-js 相关文档，参见：
 
 推荐指数：⭐⭐⭐⭐⭐
 
+购买地址：[京东](https://item.jd.com/13928958.html)、[异步社区电子书](https://www.epubit.com/bookDetails?id=UBd189db7e65bd)
+
 ![《深入 Activiti 流程引擎》](https://img30.360buyimg.com/vc/jfs/t1/6552/17/12728/2380863/643365b9F1da80c9d/ed1284cc206012b0.jpg)
