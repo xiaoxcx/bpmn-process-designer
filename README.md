@@ -26,6 +26,12 @@ bpmn-js 相关文档，参见：
 - [bpmn-js 交流群附属资料(文档及开源库)](https://juejin.cn/post/7304831120710434868)
 - [bpmn.js 进阶指南](https://juejin.cn/column/6964382482007490590)
 
+> ✨✨✨**目前成都新希望CTO和作者一起开发了 Flowable 流程引擎组件（包含前端设计器与后端流程引擎），已适配国内大多数业务场景**！
+>
+> 详情请访问：https://www.tulangkj.com/products ；
+>
+> 设计器预览：[designer](https://www.tulangkj.com/designer/)，[viewer](https://www.tulangkj.com/viewer/)
+
 ## 项目说明
 
 1. `vue 2 + JavaScript + bpmn-js@8+ + element-ui` 在本仓库 `main` 分支，是外面多数项目依赖的原始代码，问题较多。
@@ -53,3 +59,10 @@ bpmn-js 相关文档，参见：
 
 [Apache License](https://github.com/miyuesc/bpmn-process-designer/blob/next/LICENSE) © 2023 [miyuesc](https://github.com/miyuesc)
 
+## 书籍推荐
+
+《深入Activiti流程引擎：核心原理与高阶实战（异步图书出品）》
+
+推荐指数：⭐⭐⭐⭐⭐
+
+![《深入 Activiti 流程引擎》](https://img30.360buyimg.com/vc/jfs/t1/6552/17/12728/2380863/643365b9F1da80c9d/ed1284cc206012b0.jpg)
