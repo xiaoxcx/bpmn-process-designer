@@ -13,6 +13,18 @@
 <img src="https://img.shields.io/badge/Bpmn.js-%5E8.8.3-brightgreen" alt="" />
 </p>
 
+---
+
+✨✨✨**目前成都新希望 CTO (ID: 小学生@军哥) 和作者一起开发了 Activiti/Flowable 流程引擎组件（包含前端设计器与后端流程引擎），已适配国内大多数业务场景**！
+
+详情请访问：https://www.tulangkj.com/products ；
+
+设计器预览：[designer](https://www.tulangkj.com/designer/)，[viewer](https://www.tulangkj.com/viewer/)
+
+微信交流群：[二维码](./wechat-group-qr.jpg)
+
+---
+
 ## 作者简介
 
 MiyueFE（白小米），也可以叫我小白或者小米，常驻 [稀土掘金](https://juejin.cn/)，也可以通过以下方式联系我：
@@ -25,12 +37,6 @@ bpmn-js 相关文档，参见：
 
 - [bpmn-js 交流群附属资料(文档及开源库)](https://juejin.cn/post/7304831120710434868)
 - [bpmn.js 进阶指南](https://juejin.cn/column/6964382482007490590)
-
-> ✨✨✨**目前成都新希望CTO和作者一起开发了 Flowable 流程引擎组件（包含前端设计器与后端流程引擎），已适配国内大多数业务场景**！
->
-> 详情请访问：https://www.tulangkj.com/products ；
->
-> 设计器预览：[designer](https://www.tulangkj.com/designer/)，[viewer](https://www.tulangkj.com/viewer/)
 
 ## 项目说明
 
