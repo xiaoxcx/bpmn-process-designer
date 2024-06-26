@@ -1,7 +1,7 @@
 import { getBusinessObject, is } from 'bpmn-js/lib/util/ModelUtil'
 import { isAny } from 'bpmn-js/lib/features/modeling/util/ModelingUtil'
 
-import { getExtensionElementsList } from './extension-elements-utils'
+import { getExtensionElementsWithType } from './extension-elements-utils'
 import { getMessageEventDefinition } from './event-definition-utils'
 
 export type ImplementationType =
@@ -61,7 +61,7 @@ export function getImplementationType(
   }
 
   if (isServiceTaskLike(businessObject)) {
-    const connectors = getExtensionElementsList(businessObject, `flowable:Connector`)
+    const connectors = getExtensionElementsWithType(businessObject, `flowable:Connector`)
     if (connectors.length) {
       return 'connector'
     }

@@ -1,6 +1,6 @@
 import type Modeler from 'bpmn-js/lib/Modeler'
 import { createElement, getBusinessObject } from '@shared/utils/element-utils'
-import { getExtensionElementsList } from '@shared/utils/extension-elements-utils'
+import { getExtensionElementsWithType } from '@shared/utils/extension-elements-utils'
 import { is } from 'bpmn-js/lib/util/ModelUtil'
 
 /**
@@ -146,7 +146,7 @@ export const setExtensionItemBodyCommand = (
         }
       }
 
-      const exItem = getExtensionElementsList(element.businessObject, type)?.[0]
+      const exItem = getExtensionElementsWithType(element.businessObject, type)?.[0]
       if (!exItem) {
         return {
           element,

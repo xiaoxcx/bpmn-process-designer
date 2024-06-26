@@ -11,7 +11,7 @@ export function execMultiCommands(modeler: Modeler, commands: Array<CommandConte
   }
 }
 
-export function execSingleCommands(modeler: Modeler, context: CommandContext['context']) {
+export function execSingleCommand(modeler: Modeler, context: CommandContext['context']) {
   try {
     const commandStack = modeler!.get<CommandStack>('commandStack')
     commandStack.execute('element.updateModdleProperties', context)

@@ -1,12 +1,16 @@
 import { is } from 'bpmn-js/lib/util/ModelUtil'
-import { execSingleCommands } from './commands-execute'
+import { execSingleCommand } from './commands-execute'
 import { addExtensionElCommand } from '@shared/utils/commands-generator'
+
 import type Modeler from 'bpmn-js/lib/Modeler'
 
-export function getExtensionElementsList(
-  businessObject: BpmnModdleEl,
-  type?: string
-): BpmnModdleEl[] {
+export type ElementFilterFn = (el: BpmnModdleEl) => boolean
+
+/**
+ * 获取扩展元素数组，支持指定 type
+ * @param businessObject
+ */
+export function getExtensionElements(businessObject: BpmnModdleEl): BpmnModdleEl[] {
   const extensionElements = businessObject.get('extensionElements')
   if (!extensionElements) {
     return []
@@ -15,12 +19,55 @@ export function getExtensionElementsList(
   if (!values || !values.length) {
     return []
   }
-  if (type) {
-    return values.filter((value) => is(value, type))
-  }
   return values
 }
 
+/**
+ * 获取指定 type 的扩展元素数组
+ * @param businessObject
+ * @param [type]
+ */
+export function getExtensionElementsWithType(
+  businessObject: BpmnModdleEl,
+  type: string
+): BpmnModdleEl[] {
+  const values = getExtensionElements(businessObject)
+  return values.filter((value) => is(value, type))
+}
+
+/**
+ * 查找第一个指定扩展属性元素
+ * @param businessObject
+ * @param filter
+ */
+export function findExtensionElement(
+  businessObject: BpmnModdleEl,
+  filter: ElementFilterFn
+): BpmnModdleEl | undefined {
+  const values = getExtensionElements(businessObject)
+  return values.find(filter)
+}
+
+/**
+ *
+ * @param businessObject
+ * @param filter
+ */
+export function filterExtensionElements(
+  businessObject: BpmnModdleEl,
+  filter: ElementFilterFn
+): BpmnModdleEl[] {
+  const values = getExtensionElements(businessObject)
+  return values.filter(filter)
+}
+
+/**
+ * 向扩展元素中插入新元素
+ * @param modeler
+ * @param element
+ * @param businessObject
+ * @param extensionElementsToAdd
+ */
 export function addExtensionElements(
   modeler: Modeler,
   element: BpmnElement,
@@ -34,9 +81,16 @@ export function addExtensionElements(
     extensionElementsToAdd
   )
 
-  execSingleCommands(modeler, command)
+  execSingleCommand(modeler, command)
 }
 
+/**
+ * 从扩展元素中删除指定元素
+ * @param modeler
+ * @param element
+ * @param businessObject
+ * @param extensionElementsToRemove
+ */
 export function removeExtensionElements(
   modeler: Modeler,
   element: BpmnElement,
@@ -52,7 +106,7 @@ export function removeExtensionElements(
       .get('values')
       .filter((value) => !extensionElementsToRemove.includes(value))
 
-  execSingleCommands(modeler, {
+  execSingleCommand(modeler, {
     element,
     moddleElement: extensionElements,
     properties: { values }
