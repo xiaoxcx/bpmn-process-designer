@@ -1,7 +1,7 @@
 import type Modeler from 'bpmn-js/lib/Modeler'
+
 import { createElement, getBusinessObject } from '@shared/utils/element-utils'
-import { getExtensionElementsWithType } from '@shared/utils/extension-elements-utils'
-import { is } from 'bpmn-js/lib/util/ModelUtil'
+import { findExtensionElement } from '@shared/utils/extension-elements-utils'
 
 /**
  * 单独设置某个指定对象属性的一个属性
@@ -10,7 +10,7 @@ import { is } from 'bpmn-js/lib/util/ModelUtil'
  * @param type
  * @param value
  */
-export const setModdleProperty = (
+export const setModdlePropertyCommand = (
   element: BpmnElement,
   moddleElement: BpmnModdleEl,
   type: string,
@@ -28,7 +28,7 @@ export const setModdleProperty = (
  * @param moddleElement
  * @param properties
  */
-export const setModdleProperties = (
+export const setModdlePropertiesCommand = (
   element: BpmnElement,
   moddleElement: BpmnModdleEl,
   properties: Record<string, any>
@@ -50,7 +50,7 @@ export const setBoProperty = (
   type: string,
   value?: unknown
 ): CommandContext => {
-  return setModdleProperty(element, getBusinessObject(element), type, value)
+  return setModdlePropertyCommand(element, getBusinessObject(element), type, value)
 }
 /**
  * 直接设置 businessObject 的多个属性
@@ -61,25 +61,54 @@ export const setBoProperties = (
   element: BpmnElement,
   properties: Record<string, any>
 ): CommandContext => {
-  return setModdleProperties(element, getBusinessObject(element), properties)
+  return setModdlePropertiesCommand(element, getBusinessObject(element), properties)
 }
 
 /**
- * 添加扩展属性
+ * 直接设置 ModdleElement 类型元素的单个属性
+ * @param element
+ * @param moddleElement
+ * @param type
+ * @param value
+ */
+export const setModdleElProperty = (
+  element: BpmnElement,
+  moddleElement: BpmnModdleEl,
+  type: string,
+  value?: unknown
+): CommandContext => {
+  return setModdlePropertyCommand(element, moddleElement, type, value)
+}
+/**
+ * 直接设置 ModdleElement 类型元素的多个属性
+ * @param element
+ * @param moddleElement
+ * @param properties
+ */
+export const setModdleElProperties = (
+  element: BpmnElement,
+  moddleElement: BpmnModdleEl,
+  properties: Record<string, any>
+): CommandContext => {
+  return setModdlePropertiesCommand(element, moddleElement, properties)
+}
+
+/**
+ * 添加扩展元素对应的命令对象
  * @param modeler
  * @param element
- * @param businessObject
  * @param extensionElementsToAdd
  */
 export const addExtensionElCommand = (
   modeler: Modeler,
   element: BpmnElement,
-  businessObject: BpmnModdleEl,
   extensionElementsToAdd: BpmnModdleEl | BpmnModdleEl[]
 ): CommandContext => {
   if (!Array.isArray(extensionElementsToAdd)) {
     extensionElementsToAdd = [extensionElementsToAdd]
   }
+
+  const businessObject = getBusinessObject(element)
 
   return {
     cmd: 'element.updateModdleProperties',
@@ -90,6 +119,7 @@ export const addExtensionElCommand = (
         for (const extensionElementToAdd of extensionElementsToAdd) {
           extensionElementToAdd.$parent = extensionElements
         }
+
         return {
           element,
           moddleElement: extensionElements,
@@ -119,34 +149,38 @@ export const addExtensionElCommand = (
 }
 
 /**
- * 直接设置某个类型的扩展元素的 body 属性
+ * 直接设置某个类型(type)的扩展元素的属性对应的命令对象
  * @param modeler
  * @param element
  * @param type
- * @param body
+ * @param properties
  */
-export const setExtensionItemBodyCommand = (
+export const setExtensionItemPropsCommand = (
   modeler: Modeler,
   element: BpmnElement,
   type: string,
-  body: string = ''
+  properties: Record<string, unknown>
 ): CommandContext | undefined => {
+  const businessObject = getBusinessObject(element)
+
   return {
     cmd: 'element.updateModdleProperties',
     context: () => {
-      let extensionElements = element.businessObject.get('extensionElements')
+      let extensionElements = businessObject.get('extensionElements')
+
       if (!extensionElements) {
         extensionElements = createElement(modeler, 'bpmn:ExtensionElements', {
-          values: [createElement(modeler, type, { body })]
+          values: [createElement(modeler, type, { ...properties })]
         })
         return {
           element,
-          moddleElement: element.businessObject,
+          moddleElement: businessObject,
           properties: { extensionElements }
         }
       }
 
-      const exItem = getExtensionElementsWithType(element.businessObject, type)?.[0]
+      const exItem = findExtensionElement(businessObject, type)
+
       if (!exItem) {
         return {
           element,
@@ -154,7 +188,7 @@ export const setExtensionItemBodyCommand = (
           properties: {
             values: [
               ...extensionElements.get('values'),
-              createElement(modeler, type, { body }, extensionElements)
+              createElement(modeler, type, { ...properties }, extensionElements)
             ]
           }
         }
@@ -163,7 +197,7 @@ export const setExtensionItemBodyCommand = (
       return {
         element,
         moddleElement: exItem,
-        properties: { body }
+        properties: { ...properties }
       }
     }
   }

@@ -42,14 +42,17 @@ export function getExtensionElementsWithType(
  */
 export function findExtensionElement(
   businessObject: BpmnModdleEl,
-  filter: ElementFilterFn
+  filter: string | ElementFilterFn
 ): BpmnModdleEl | undefined {
   const values = getExtensionElements(businessObject)
+  if (typeof filter === 'string') {
+    return values.find((value) => is(value, filter))
+  }
   return values.find(filter)
 }
 
 /**
- *
+ * 查找第一个指定扩展属性元素
  * @param businessObject
  * @param filter
  */
@@ -65,21 +68,14 @@ export function filterExtensionElements(
  * 向扩展元素中插入新元素
  * @param modeler
  * @param element
- * @param businessObject
  * @param extensionElementsToAdd
  */
 export function addExtensionElements(
   modeler: Modeler,
   element: BpmnElement,
-  businessObject: BpmnModdleEl,
   extensionElementsToAdd: BpmnModdleEl | BpmnModdleEl[]
 ) {
-  const command: CommandContext = addExtensionElCommand(
-    modeler,
-    element,
-    businessObject,
-    extensionElementsToAdd
-  )
+  const command: CommandContext = addExtensionElCommand(modeler, element, extensionElementsToAdd)
 
   execSingleCommand(modeler, command)
 }
