@@ -77,6 +77,10 @@ bpmn-js 相关文档，参见：
 
 [Apache License](https://github.com/miyuesc/bpmn-process-designer/blob/next/LICENSE) © 2023 [miyuesc](https://github.com/miyuesc)
 
+本项目遵守 Apache License 2.0 开源协议，详情请参阅 [LICENSE](https://github.com/miyuesc/bpmn-process-designer/blob/next/LICENSE) 文件。
+
+基于此项目进行开发时，请保留作者的版权信息。
+
 ## 书籍推荐
 
 《深入Activiti流程引擎：核心原理与高阶实战（异步图书出品）》

@@ -6,6 +6,7 @@
     "dev": "vite"
   },
   "dependencies": {
-    "@miyue-bpmn/modules": "workspace:^"
+    "@miyue-bpmn/modules": "workspace:^",
+    "@miyue-bpmn/viewer": "workspace:^"
   }
 }

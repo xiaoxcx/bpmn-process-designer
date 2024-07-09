@@ -1,8 +1,9 @@
 <script lang="ts" setup>
   import { onMounted, ref } from 'vue'
-  import Modeler from 'bpmn-js/lib/Modeler'
-  import additionalModules from '@miyue-bpmn/modules'
+  // import Modeler from 'bpmn-js/lib/Modeler'
+  import Viewer from '@miyue-bpmn/viewer'
   import { PaletteEntriesConfig } from '@miyue-bpmn/modules/palette/PaletteProvider'
+  import emptyXml from './empty-xml'
 
   const container = ref<HTMLDivElement>()
 
@@ -21,13 +22,12 @@
   }
 
   onMounted(() => {
-    const modeler = new Modeler({
+    const modeler = new Viewer({
       container: container.value!,
-      additionalModules,
       paletteEntries
     })
 
-    modeler.createDiagram()
+    modeler.importXML(emptyXml())
   })
 </script>
 

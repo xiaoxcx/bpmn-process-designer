@@ -11,6 +11,7 @@
   "dependencies": {
     "@miyue-mma/shared": "^0.0.6",
     "bpmn-js": "^17.3.0",
+    "diagram-js-grid-bg": "^1.1.0",
     "ids": "^1.0.5",
     "lucide-vue-next": "^0.358.0",
     "min-dash": "^4.2.1",
