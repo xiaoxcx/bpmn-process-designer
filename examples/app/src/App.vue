@@ -21,13 +21,21 @@
     ]
   }
 
-  onMounted(() => {
+  onMounted(async () => {
     const modeler = new Viewer({
       container: container.value!,
       paletteEntries
     })
 
-    modeler.importXML(emptyXml())
+    await modeler.importXML(emptyXml())
+
+    modeler.autoZoom()
+
+    modeler.on<{ element: BpmnElement }>('element.click', ({ element }) => {
+      console.log(element)
+
+      modeler.autoElementCenter(element)
+    })
   })
 </script>
 

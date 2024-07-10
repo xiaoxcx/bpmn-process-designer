@@ -1,9 +1,9 @@
 import NavigatedViewer from 'bpmn-js/lib/NavigatedViewer'
-import { BaseViewerOptions } from 'bpmn-js/lib/BaseViewer'
-import Canvas from 'diagram-js/lib/core/Canvas'
-import BpmnFactory from 'bpmn-js/lib/features/modeling/BpmnFactory'
-
 import GridLineModule from 'diagram-js-grid-bg'
+
+import type { BaseViewerOptions, ModuleDeclaration } from 'bpmn-js/lib/BaseViewer'
+import type Canvas from 'diagram-js/lib/core/Canvas'
+import type BpmnFactory from 'bpmn-js/lib/features/modeling/BpmnFactory'
 
 export type ViewerTheme = 'dark' | 'light'
 export type ViewerOptions = BaseViewerOptions & {
@@ -12,15 +12,22 @@ export type ViewerOptions = BaseViewerOptions & {
 
 // @ts-expect-error
 const _navigationModules = NavigatedViewer.prototype._modules
+const _additionalModules: ModuleDeclaration[] = [GridLineModule]
 
 export default class Viewer extends NavigatedViewer {
   _theme: ViewerTheme = 'light'
-  _additionalModules = [GridLineModule]
-  _modules = _navigationModules.concat(this._additionalModules)
+
   private _container: HTMLElement | undefined
+  private _additionalModules: ModuleDeclaration[] = [GridLineModule]
+  private _modules: ModuleDeclaration[] = []
 
   constructor(options: ViewerOptions) {
     super(options)
+  }
+
+  // 必须重写
+  getModules() {
+    return (this._modules = _navigationModules.concat(_additionalModules))
   }
 
   getCanvas() {
@@ -43,10 +50,15 @@ export default class Viewer extends NavigatedViewer {
    */
   autoElementCenter(element: BpmnElement) {
     const canvas = this.getCanvas()
-    const viewbox = canvas.viewbox()
-    const left = (viewbox.width - element.width) / 2
-    const top = (viewbox.height - element.height) / 2
-    this.getCanvas().scrollToElement(element, { top, left, bottom: top, right: left })
+    const { width, height } = canvas.getSize()
+    const { scale } = canvas.viewbox()
+    const left = Math.round((width - element.width * scale) / 2)
+    const top = Math.round((height - element.height * scale) / 2)
+
+    const bottom = top
+    const right = left
+
+    this.getCanvas().scrollToElement(element, { top, left, bottom, right })
   }
 
   /**
