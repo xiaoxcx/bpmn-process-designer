@@ -1,0 +1,21 @@
+{
+  "name": "@miyue-bpmn/react",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint vite-project",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "bpmn-js-properties-panel": "^5.21.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "globals": "^15.9.0",
+    "typescript-eslint": "^8.0.0"
+  }
+}
