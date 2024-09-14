@@ -540,7 +540,7 @@ export const SUBPROCESS: BaseCreateOption<SubProcess>[] = [
   {
     label: 'Sub-process (expanded)',
     actionName: 'expanded-subprocess',
-    className: 'bpmn-icon-subprocess-collapsed',
+    className: 'bpmn-icon-subprocess-expanded',
     target: {
       type: 'bpmn:SubProcess',
       isExpanded: true
