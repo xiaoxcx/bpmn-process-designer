@@ -15,22 +15,26 @@
 
 ---
 
-> bpmn-js 等相关内容，遇到问题可以在 [bpmn-js-questions](https://github.com/miyuesc/bpmn-js-questions) 中查询或者提问。由于最近被骂的太狠了，这个项目可能不会经常更新，请关注下述产品。
+> bpmn-js 等相关内容，遇到问题可以在 [bpmn-js-questions: bpmn工具库说明及常见问题解答](https://github.com/miyuesc/bpmn-js-questions) 中查询或者提问。由于最近被骂的太狠了，这个项目可能不会经常更新，请关注下述产品。
 
 ---
 
-✨✨✨**目前成都的"小学生"大佬和作者一起开发了 Flowable 流程引擎组件（包含前端设计器与后端流程引擎）。**
+✨✨✨**目前成都的"小学生"大佬和作者一起开发了 Flowable/Activiti 流程引擎组件（包含前端设计器与后端流程引擎）。**
 
 **该组件与Flowable 流程引擎深度融合，结合实际业务场景和使用方式，对属性编辑面板进行了重新设计，优化了用户体验。 增加了符合业务场景的流程校验与进度预览、引入了富文本编辑器与代码编辑器。 结合后端引擎，可直接嵌入系统中使用。**
 
-详情请访问：[产品介绍](https://www.bpmport.com/products) ；
+详情请访问：[产品介绍](https://www.bpmport.com/products)
 
-设计器预览：
+设计器预览( Flowable )：
 
 - [bpmn designer](https://designer.bpmport.com/designer/)
 - [bpmn viewer and mocker](https://designer.bpmport.com/viewer/)
 - [dmn designer](https://designer.bpmport.com/dmn/)
 - [dmn viewer and mocker](https://designer.bpmport.com/dmnviewer/)
+
+设计器预览( Activiti )：
+- [bpmn designer](https://designer.bpmport.com/activiti/)
+- [bpmn viewer and mocker](https://designer.bpmport.com/activiti/viewer/#/)
 
 交流群：
 
@@ -67,16 +71,6 @@ bpmn-js 相关文档，参见：
 > 另外，上述 1、2、3 三个分支作为很早之前的版本，虽然用户量比较多，但是依然存在很多问题，建议在理解代码之后进行重新开发。
 > next 分支提供了基础的 bpmn-js 工具方法，基于官方 camunda 属性面板，并进行了多次测试，基本上可以满足大部分需求。
 
-## 相关项目
-
-| 🎁 Projects <div style="width:100px">                                                         | ⭐ Description                                                                                                                                                                                   | ☄ Downloads                                                  | ✨ License                                                    |
-|-----------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [diagram-js-grid-bg](https://github.com/miyuesc/diagram-js-grid-bg)                           | A visual grid backgroud for diagram-js, base on diagram-js-grid. <br/> 基于 diagram-js-grid 的 SVG 网格背景，可用于diagram-js的相关项目，例如 bpmn-js、dmn-js 等。                                                    | ![NPM Downloads](https://img.shields.io/npm/dw/diagram-js-grid-bg) | ![NPM License](https://img.shields.io/npm/l/diagram-js-grid-bg) |
-| [diagram-js-context-pad](https://github.com/miyuesc/diagram-js-context-pad)                   | An element context menu component for diagram-js/bpmn-js use, base on diagram-js/lib/features/context-pad.<br/> 一个提供给 diagram-js/bpmn-js 使用的元素上下文菜单组件，基于 `diagram-js/lib/features/context-pad`。 | ![NPM Downloads](https://img.shields.io/npm/dw/diagram-js-context-pad) | ![NPM License](https://img.shields.io/npm/l/diagram-js-context-pad) |
-| [diagram-js-accordion-palette](https://github.com/miyuesc/diagram-js-accordion-palette)       | A palette that supports folding and unfolding, provided for diagram-js use。Base on diagram-js/palette <br/> 一个支持折叠展开的调色板，提供给 diagram-js 使用。基于 diagram-js 本身的 Palette。                           | ![NPM Downloads](https://img.shields.io/npm/dw/diagram-js-accordion-palette) | ![NPM License](https://img.shields.io/npm/l/diagram-js-accordion-palette) |
-| [bpmn-js-i18n-zh](https://github.com/miyuesc/bpmn-js-i18n-zh)                                 | Chinese internationalization resources for bpmn-js. <br/> 关于 bpmn-js-properties-panel 的中文支持。                                                                                                    | ![NPM Downloads](https://img.shields.io/npm/dw/bpmn-js-i18n-zh) | ![NPM License](https://img.shields.io/npm/l/bpmn-js-i18n-zh) |
-| [bpmn-js-external-label-modeling](https://github.com/miyuesc/bpmn-js-external-label-modeling) | A bpmn-js plugin used to render Label tags outside of nodes. <br/> 一个用来将Label标签渲染在节点外部的bpmn-js插件。                                                                                               | ![NPM Downloads](https://img.shields.io/npm/dw/bpmn-js-external-label-modeling) | ![NPM License](https://img.shields.io/npm/l/bpmn-js-external-label-modeling) |
-
 ## 开源许可
 
 [Apache License](https://github.com/miyuesc/bpmn-process-designer/blob/next/LICENSE) © 2023 [miyuesc](https://github.com/miyuesc)
@@ -87,10 +81,20 @@ bpmn-js 相关文档，参见：
 
 ## 书籍推荐
 
-《深入Activiti流程引擎：核心原理与高阶实战（异步图书出品）》
+#### 《深入Activiti流程引擎：核心原理与高阶实战》
 
 推荐指数：⭐⭐⭐⭐⭐
 
 购买地址：[京东](https://item.jd.com/13928958.html)、[异步社区电子书](https://www.epubit.com/bookDetails?id=UBd189db7e65bd)
 
 ![《深入 Activiti 流程引擎》](https://img30.360buyimg.com/vc/jfs/t1/6552/17/12728/2380863/643365b9F1da80c9d/ed1284cc206012b0.jpg)
+
+#### 《深入Flowable流程引擎：核心原理与高阶实战》
+
+推荐指数：⭐⭐⭐⭐⭐
+
+购买地址：[京东](https://item.jd.com/14804836.html)
+
+这本书得到了 Flowable 创始人 Tijs Rademakers 亲笔作序推荐，对系统学习和深入掌握 Flowable 的用法非常有帮助。
+
+![深入Flowable流程引擎](https://img14.360buyimg.com/n0/jfs/t1/108850/37/53916/154540/66f612a3Fdb62296b/2d4c3001da6dd921.jpg)
