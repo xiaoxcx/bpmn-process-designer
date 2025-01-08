@@ -130,6 +130,9 @@ importers:
 
   examples/app:
     dependencies:
+      '@miyue-bpmn/designer':
+        specifier: workspace:^
+        version: link:../../packages/designer
       '@miyue-bpmn/modules':
         specifier: workspace:^
         version: link:../../packages/modules

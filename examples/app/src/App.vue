@@ -1,6 +1,7 @@
 <script lang="ts" setup>
   import { onMounted, ref } from 'vue'
-  import Modeler from 'bpmn-js/lib/Modeler'
+  // import Modeler from 'bpmn-js/lib/Modeler'
+  import Designer from '@miyue-bpmn/designer'
   // import Viewer from '@miyue-bpmn/viewer'
   import type { PaletteEntriesConfig } from '@miyue-bpmn/modules/palette/PaletteProvider'
   import PaletteProvider from '@miyue-bpmn/modules/palette'
@@ -31,21 +32,15 @@
   }
 
   onMounted(async () => {
-    const modeler = new Modeler({
+    const designer = new Designer({
       container: container.value!,
       additionalModules: [PaletteProvider],
       paletteEntries
     })
 
-    await modeler.importXML(emptyXml())
+    await designer.importXML(emptyXml())
 
-    // modeler.autoZoom()
-
-    // modeler.on<{ element: BpmnElement }>('element.click', ({ element }) => {
-    //   console.log(element)
-    //
-    //   modeler.autoElementCenter(element)
-    // })
+    designer.autoZoomAndCenter()
   })
 </script>
 
