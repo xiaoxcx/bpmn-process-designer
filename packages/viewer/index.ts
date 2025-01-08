@@ -3,7 +3,9 @@ import GridLineModule from 'diagram-js-grid-bg'
 
 import type { BaseViewerOptions, ModuleDeclaration } from 'bpmn-js/lib/BaseViewer'
 import type Canvas from 'diagram-js/lib/core/Canvas'
+import type EventBus from 'diagram-js/lib/core/EventBus'
 import type BpmnFactory from 'bpmn-js/lib/features/modeling/BpmnFactory'
+import type ElementFactory from 'bpmn-js/lib/features/modeling/ElementFactory'
 
 export type ViewerTheme = 'dark' | 'light'
 export type ViewerOptions = BaseViewerOptions & {
@@ -33,20 +35,30 @@ export default class Viewer extends NavigatedViewer {
   getCanvas() {
     return this.get<Canvas>('canvas')
   }
-  getFactory() {
+  getBpmnFactory() {
     return this.get<BpmnFactory>('bpmnFactory')
+  }
+  getElementFactory() {
+    return this.get<ElementFactory>('elementFactory')
+  }
+
+  // 获取所有已注册的事件
+  getRegisteredEvents() {
+    const eventBus = this.get<EventBus>('eventBus')
+    const allListener = (eventBus as any)._listeners as Record<string, any>
+    return Object.keys(allListener).sort()
   }
 
   /**
    * 自适应缩放并居中
    */
-  autoZoom() {
+  autoZoomAndCenter() {
     // @ts-expect-error center 不符合格式时会自动计算中心
     this.getCanvas().zoom('fit-viewport', 'center')
   }
 
   /**
-   * 自适应缩放并居中
+   * 自适应缩放并保持指定元素居中
    */
   autoElementCenter(element: BpmnElement) {
     const canvas = this.getCanvas()
