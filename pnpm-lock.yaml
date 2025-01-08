@@ -137,7 +137,11 @@ importers:
         specifier: workspace:^
         version: link:../../packages/viewer
 
-  packages/designer: {}
+  packages/designer:
+    dependencies:
+      '@miyue-bpmn/viewer':
+        specifier: workspace:*
+        version: link:../viewer
 
   packages/modules:
     dependencies:
@@ -2481,7 +2485,7 @@ snapshots:
       feelers: 1.4.0
       focus-trap: 7.5.4
       min-dash: 4.2.1
-      min-dom: 4.1.0
+      min-dom: 4.2.1
     transitivePeerDependencies:
       - '@lezer/common'
 

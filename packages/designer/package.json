@@ -13,5 +13,6 @@
     "url": "https://github.com/miyuesc/bpmn-process-designer.git"
   },
   "dependencies": {
+    "@miyue-bpmn/viewer": "workspace:*"
   }
 }
