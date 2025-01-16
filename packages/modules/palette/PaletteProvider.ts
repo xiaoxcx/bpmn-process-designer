@@ -7,8 +7,8 @@ import type HandTool from 'diagram-js/lib/features/hand-tool/HandTool'
 import type GlobalConnect from 'diagram-js/lib/features/global-connect/GlobalConnect'
 import Translate from 'diagram-js/lib/i18n/translate/translate'
 
-import { CREATE_OPTIONS, type BaseCreateOption, type CreateOptionType } from './CreateOptionsUtil'
-import { TOOLS_OPTIONS, type BaseToolOption, type ToolModuleName } from './EdtionToolOptionsUtil'
+import { CREATE_OPTIONS, type BaseCreateOption, type CreateOptionType } from './create-options-util'
+import { TOOLS_OPTIONS, type BaseToolOption, type ToolModuleName } from './edition-tool-options-util'
 
 const injects = [
   'config.paletteEntries',
