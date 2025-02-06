@@ -79,6 +79,10 @@ bpmn-js 相关文档，参见：
 
 基于此项目进行开发时，请保留作者的版权信息。
 
+## 赞助
+
+[<img src="https://api.gitsponsors.com/api/badge/img?id=318393347" height="60">](https://api.gitsponsors.com/api/badge/link?p=J+hXKkHNzEZhBfJHv8gFbYp0dII7ODITbchEqwXlyxhiZAozzqdyvfIp3tnv9GPj)
+
 ## 书籍推荐
 
 #### 《深入Activiti流程引擎：核心原理与高阶实战》
