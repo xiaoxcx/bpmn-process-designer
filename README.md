@@ -81,7 +81,7 @@ bpmn-js 相关文档，参见：
 
 ## 赞助
 
-[<img src="https://api.gitsponsors.com/api/badge/img?id=318393347" height="60">](https://api.gitsponsors.com/api/badge/link?p=J+hXKkHNzEZhBfJHv8gFbYp0dII7ODITbchEqwXlyxhiZAozzqdyvfIp3tnv9GPj)
+[<img src="https://api.gitsponsors.com/api/badge/img?id=318393347" height="20">](https://api.gitsponsors.com/api/badge/link?p=J+hXKkHNzEZhBfJHv8gFbXIPQJr/lskVla/9OXl2u6dEePkM0zMNIOqvBzKBJXYpFu3keXr+AaAuA82yHaSlAtm55aR+2d3v6I2S470pm4J0IUIkwfedWRoUUe1txNc58ijAx6i+jBZiwLsqnmIdaQ==)
 
 ## 书籍推荐
 
