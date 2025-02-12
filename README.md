@@ -15,30 +15,35 @@
 
 ---
 
-> bpmn-js 等相关内容，遇到问题可以在 [bpmn-js-questions: bpmn工具库说明及常见问题解答](https://github.com/miyuesc/bpmn-js-questions) 中查询或者提问。由于最近被骂的太狠了，这个项目可能不会经常更新，请关注下述产品。
+<div style="backgroud: red">
 
----
-
-✨✨✨**目前成都的"小学生"大佬和作者一起开发了 Flowable/Activiti 流程引擎组件（包含前端设计器与后端流程引擎）。**
+✨✨✨ **目前成都的"小学生"大佬和作者一起开发了 Flowable 流程引擎组件（包含前端设计器与后端流程引擎）。**
 
 **该组件与Flowable 流程引擎深度融合，结合实际业务场景和使用方式，对属性编辑面板进行了重新设计，优化了用户体验。 增加了符合业务场景的流程校验与进度预览、引入了富文本编辑器与代码编辑器。 结合后端引擎，可直接嵌入系统中使用。**
 
-详情请访问：[产品介绍](https://www.bpmport.com/products)
+详情请访问：https://www.bpmport.com/products
 
-设计器预览( Flowable )：
+设计器预览：[FlowableDesigner](https://designer.bpmport.com/designer/)，[FlowableViewer](https://designer.bpmport.com/viewer/)
 
-- [bpmn designer](https://designer.bpmport.com/designer/)
-- [bpmn viewer and mocker](https://designer.bpmport.com/viewer/)
-- [dmn designer](https://designer.bpmport.com/dmn/)
-- [dmn viewer and mocker](https://designer.bpmport.com/dmnviewer/)
 
-设计器预览( Activiti )：
-- [bpmn designer](https://designer.bpmport.com/activiti/)
-- [bpmn viewer and mocker](https://designer.bpmport.com/activiti/viewer/#/)
+联系方式：
 
-交流群：
+Mail: 463805737@qq.com
 
-![qq](./docs/qq-group.png)
+QQ Group: 582010059
+
+<p align="center">
+
+<img src="./docs/qq-group.png" alt="QQ Group" />
+<img src="https://www.bpmport.com/images/contact-us-weixin-img.b5e3c289.png" alt="wechat" />
+
+</p>
+</div>
+
+---
+
+> bpmn-js 等相关内容，遇到问题可以在 [bpmn-js-questions: bpmn工具库说明及常见问题解答](https://github.com/miyuesc/bpmn-js-questions) 中查询或者提问。由于最近被骂的太狠了，这个项目可能不会经常更新，请关注下述产品。
+
 
 ---
 
