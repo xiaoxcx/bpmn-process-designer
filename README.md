@@ -1,44 +1,32 @@
 <h1 align="center">Bpmn Process Designer</h1>
 
-<p align="center">
-<img alt="GitHub stars" src="https://img.shields.io/github/stars/miyuesc/bpmn-process-designer?style=flat&logo=github" />
-<img alt="GitHub forks" src="https://img.shields.io/github/forks/miyuesc/bpmn-process-designer?style=flat&logo=github" />
-<img src='https://gitee.com/miyuesc/bpmn-process-designer/badge/star.svg?theme=dark' alt='star' />
-<img src='https://gitee.com/miyuesc/bpmn-process-designer/badge/fork.svg?theme=dark' alt='fork' />
-</p>
-
-<p align="center">
-<img src="https://img.shields.io/badge/Vue-2.x-brightgreen" alt="" />
-<img src="https://img.shields.io/badge/ElementUI-%5E2.13-brightgreen" alt="" />
-<img src="https://img.shields.io/badge/Bpmn.js-%5E8.8.3-brightgreen" alt="" />
-</p>
-
 ---
 
-<div style="backgroud: red">
+<b>
+<font color="#2d8cf0" weight="2" size="4">✨✨✨ 目前成都的"小学生"大佬和作者一起开发了 Flowable 流程引擎组件（包含前端设计器与后端流程引擎）。</font>
 
-✨✨✨ **目前成都的"小学生"大佬和作者一起开发了 Flowable 流程引擎组件（包含前端设计器与后端流程引擎）。**
-
-**该组件与Flowable 流程引擎深度融合，结合实际业务场景和使用方式，对属性编辑面板进行了重新设计，优化了用户体验。 增加了符合业务场景的流程校验与进度预览、引入了富文本编辑器与代码编辑器。 结合后端引擎，可直接嵌入系统中使用。**
+<font color="#2d8cf0" weight="2" size="4">🚀🚀🚀该组件与Flowable 流程引擎深度融合，结合实际业务场景和使用方式，对属性编辑面板进行了重新设计，优化了用户体验。 增加了符合业务场景的流程校验与进度预览、引入了富文本编辑器与代码编辑器。 结合后端引擎，可直接嵌入系统中使用。</font>
 
 详情请访问：https://www.bpmport.com/products
 
 设计器预览：[FlowableDesigner](https://designer.bpmport.com/designer/)，[FlowableViewer](https://designer.bpmport.com/viewer/)
 
 
-联系方式：
+<font weight="bold" size="4">联系方式：</font>
 
 Mail: 463805737@qq.com
 
 QQ Group: 582010059
 
-<p align="center">
+</b>
+</font>
 
-<img src="./docs/qq-group.png" alt="QQ Group" />
+<p align="left">
+
+<img src="./docs/qq-group.png" alt="QQ Group"  />
 <img src="https://www.bpmport.com/images/contact-us-weixin-img.b5e3c289.png" alt="wechat" />
 
 </p>
-</div>
 
 ---
 
@@ -55,10 +43,6 @@ MiyueFE（白小米），也可以叫我小白或者小米，常驻 [稀土掘�
 - 掘金：[MiyueFE](https://juejin.cn/user/747323639208391)
 - 公众号：MiyueFE 的前端圈
 
-bpmn-js 相关文档，参见：
-
-- [bpmn-js 交流群附属资料(文档及开源库)](https://juejin.cn/post/7304831120710434868)
-- [bpmn.js 进阶指南](https://juejin.cn/column/6964382482007490590)
 
 ## 项目说明
 
@@ -67,8 +51,6 @@ bpmn-js 相关文档，参见：
 2. `vue 2 + JavaScript + bpmn-js@9+ + element-ui` 在本仓库 `v2` 分支，修改了少数样式，调整了数据交互逻辑。
 
 3. `vue 3 + TypeScript + bpmn-js@13 + naive-ui` 在 [moon-studio/vite-vue-bpmn-process](https://github.com/moon-studio/vite-vue-bpmn-process) 仓库，是 `v2` 的前身。
-
-4. ~~`vue 3 + TypeScript + bpmn-js@17 + naive-ui` **闭源** 项目 [vue-bpmn-process-designer](https://bpmn.miyuefe.cn) 完善了 TypeScript 类型声明部分，解决了撤销回退操作栈异常的问题，增加了垂直泳道、垂直布局、动态渲染等功能~~
 
 
 > 当前 `next` 分支作为 pnpm workplace 测试分支，与上述所有内容存在较大差异（暂时不能直接使用），加上工作问题，更新时间不定。
@@ -86,7 +68,7 @@ bpmn-js 相关文档，参见：
 
 ## 赞助
 
-[<img src="https://api.gitsponsors.com/api/badge/img?id=318393347" height="20">](https://api.gitsponsors.com/api/badge/link?p=J+hXKkHNzEZhBfJHv8gFbXIPQJr/lskVla/9OXl2u6dEePkM0zMNIOqvBzKBJXYpFu3keXr+AaAuA82yHaSlAtm55aR+2d3v6I2S470pm4J0IUIkwfedWRoUUe1txNc58ijAx6i+jBZiwLsqnmIdaQ==)
+[<img src="https://api.gitsponsors.com/api/badge/img?id=318393347" height="80">](https://api.gitsponsors.com/api/badge/link?p=J+hXKkHNzEZhBfJHv8gFbXIPQJr/lskVla/9OXl2u6dEePkM0zMNIOqvBzKBJXYpFu3keXr+AaAuA82yHaSlAtm55aR+2d3v6I2S470pm4J0IUIkwfedWRoUUe1txNc58ijAx6i+jBZiwLsqnmIdaQ==)
 
 ## 书籍推荐
 
