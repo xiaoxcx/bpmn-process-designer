@@ -48,7 +48,7 @@ MiyueFE（白小米），也可以叫我小白或者小米，常驻 [稀土掘�
 
 1. `vue 2 + JavaScript + bpmn-js@8+ + element-ui` 在本仓库 `main` 分支，是外面多数项目依赖的原始代码，问题较多。
 
-2. `vue 2 + JavaScript + bpmn-js@9+ + element-ui` 在本仓库 `v2` 分支，修改了少数样式，调整了数据交互逻辑。
+2. `vue 2 + JavaScript + bpmn-js@9+ + element-ui` 在本仓库 `v2` 分支，修改了少数样式，调整了数据交互逻辑，但是核心的数据更新与处理部分逻辑还有一些缺陷。
 
 3. `vue 3 + TypeScript + bpmn-js@13 + naive-ui` 在 [moon-studio/vite-vue-bpmn-process](https://github.com/moon-studio/vite-vue-bpmn-process) 仓库，是 `v2` 的前身。
 
@@ -56,7 +56,9 @@ MiyueFE（白小米），也可以叫我小白或者小米，常驻 [稀土掘�
 > 当前 `next` 分支作为 pnpm workplace 测试分支，与上述所有内容存在较大差异（暂时不能直接使用），加上工作问题，更新时间不定。
 > 
 > 另外，上述 1、2、3 三个分支作为很早之前的版本，虽然用户量比较多，但是依然存在很多问题，建议在理解代码之后进行重新开发。
-> next 分支提供了基础的 bpmn-js 工具方法，基于官方 camunda 属性面板，并进行了多次测试，基本上可以满足大部分需求。
+> next 分支提供了基础的 bpmn-js 工具方法，基于官方 camunda 属性面板，并进行了多次测试，基本上可以满足大部分自主开发中的核心需求，只需要基于该分支进行二次开发即可。
+>
+> 如果需要可以直接结合系统使用，并且已经修复了核心业务逻辑问题的版本，可以联系上面的商业版本。
 
 ## 开源许可
 
