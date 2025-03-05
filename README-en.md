@@ -37,6 +37,7 @@ MiyueFE (Bai Xiaomi), also known as Xiaobai or Xiaomi, is a front-end developer 
 
 - Email: [QQ mail](mailto:913784771@qq.com)
 - Juejin: [MiyueFE](https://juejin.cn/user/747323639208391)
+- Discard：https://discord.gg/c8SJdvAM
 - WeChat: MiyueFE 的前端圈
 
 
