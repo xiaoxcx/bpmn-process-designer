@@ -17,8 +17,8 @@ Mail: 463805737@qq.com
 QQ Group: 582010059
 
 </b>
-</font>
 
+<p align="left">
 
 <img src="./docs/qq-group.png" alt="QQ Group"  />
 <img src="https://www.bpmport.com/images/contact-us-weixin-img.b5e3c289.png" alt="wechat" />

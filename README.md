@@ -19,7 +19,6 @@ Mail: 463805737@qq.com
 QQ Group: 582010059
 
 </b>
-</font>
 
 <p align="left">
 
