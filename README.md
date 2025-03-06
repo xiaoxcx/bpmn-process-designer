@@ -40,7 +40,7 @@ MiyueFE（白小米），也可以叫我小白或者小米，常驻 [稀土掘�
 
 - 邮箱：[QQ mail](mailto:913784771@qq.com)
 - 掘金：[MiyueFE](https://juejin.cn/user/747323639208391)
-- Discard：https://discord.gg/c8SJdvAM
+- Discard：https://discord.gg/8cBhGGyeV5
 - 公众号：MiyueFE 的前端圈
 
 
