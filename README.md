@@ -68,10 +68,6 @@ MiyueFE（白小米），也可以叫我小白或者小米，常驻 [稀土掘�
 
 基于此项目进行开发时，请保留作者的版权信息。
 
-## 赞助
-
-[<img src="https://api.gitsponsors.com/api/badge/img?id=318393347" height="80">](https://api.gitsponsors.com/api/badge/link?p=J+hXKkHNzEZhBfJHv8gFbXIPQJr/lskVla/9OXl2u6dEePkM0zMNIOqvBzKBJXYpFu3keXr+AaAuA82yHaSlAtm55aR+2d3v6I2S470pm4J0IUIkwfedWRoUUe1txNc58ijAx6i+jBZiwLsqnmIdaQ==)
-
 ## 书籍推荐
 
 #### 《深入Activiti流程引擎：核心原理与高阶实战》

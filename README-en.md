@@ -66,11 +66,6 @@ MiyueFE (Bai Xiaomi), also known as Xiaobai or Xiaomi, is a front-end developer 
 **This project follows the Apache License 2.0 open source agreement, please refer to [LICENSE](https://github.com/miyuesc/bpmn-process-designer/blob/next/LICENSE) file for details.**
 
 
-## Sponsorship
-
-[<img src="https://api.gitsponsors.com/api/badge/img?id=318393347" height="80">](https://api.gitsponsors.com/api/badge/link?p=J+hXKkHNzEZhBfJHv8gFbXIPQJr/lskVla/9OXl2u6dEePkM0zMNIOqvBzKBJXYpFu3keXr+AaAuA82yHaSlAtm55aR+2d3v6I2S470pm4J0IUIkwfedWRoUUe1txNc58ijAx6i+jBZiwLsqnmIdaQ==)
-
-
 ## Book Recommendation
 
 #### 《深入Activiti流程引擎：核心原理与高阶实战》
