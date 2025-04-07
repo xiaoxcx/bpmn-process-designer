@@ -1,5 +1,5 @@
 {
-  "name": "@miyue-bpmn/example-app",
+  "name": "@miyue-bpmn/example-vue-app",
   "version": "1.0.0",
   "main": "index.ts",
   "types": "index.ts",
