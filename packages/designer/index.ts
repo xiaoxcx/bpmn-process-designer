@@ -16,6 +16,10 @@ export default class Designer extends Modeler {
   private _insertElement: (targetShape: BpmnElement, newElement: string, distance?: number) => void
   updatePalette: () => void
 
+  /**
+   * 创建编辑器对象
+   * @param {ViewerOptions} options
+   */
   constructor(options: ViewerOptions) {
     super(options)
 
