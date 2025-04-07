@@ -27,7 +27,7 @@ QQ Group: 582010059
 
 ---
 
-> About bpmn-js and related content, if you have any questions, you can check the [bpmn-js-questions: bpmn tool library description and common problem solutions](https://github.com/miyuesc/bpmn-js-questions) or ask questions. 
+About bpmn-js and related content, if you have any questions, you can check the [bpmn-js-questions: bpmn tool library description and common problem solutions](https://github.com/miyuesc/bpmn-js-questions) or ask questions. 
 
 ---
 

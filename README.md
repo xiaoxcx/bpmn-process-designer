@@ -29,8 +29,9 @@ QQ Group: 582010059
 
 ---
 
-> bpmn-js 等相关内容，遇到问题可以在 [bpmn-js-questions: bpmn工具库说明及常见问题解答](https://github.com/miyuesc/bpmn-js-questions) 中查询或者提问。由于最近被骂的太狠了，这个项目可能不会经常更新，请关注下述产品。
+bpmn-js 等相关内容，遇到问题可以在 [bpmn-js-questions: bpmn工具库说明及常见问题解答](https://github.com/miyuesc/bpmn-js-questions) 中查询或者提问。
 
+由于最近被骂的太狠了，这个项目可能不会经常更新，请关注上述产品。
 
 ---
 
