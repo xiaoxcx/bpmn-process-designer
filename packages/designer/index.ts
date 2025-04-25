@@ -9,10 +9,13 @@ export default class Designer extends Modeler {
   getCanvas: typeof Viewer.prototype.getCanvas
   getBpmnFactory: typeof Viewer.prototype.getBpmnFactory
   getElementFactory: typeof Viewer.prototype.getElementFactory
+  getElementRegistry: typeof Viewer.prototype.getElementRegistry
   getRegisteredEvents: typeof Viewer.prototype.getRegisteredEvents
   autoZoomAndCenter: typeof Viewer.prototype.autoZoomAndCenter
   autoElementCenter: typeof Viewer.prototype.autoElementCenter
   toggleTheme: typeof Viewer.prototype.toggleTheme
+  addClass: typeof Viewer.prototype.addClass
+  addStyle: typeof Viewer.prototype.addStyle
 
   private _insertElement: (targetShape: BpmnElement, newElement: string, distance?: number) => void
 
@@ -29,10 +32,13 @@ export default class Designer extends Modeler {
     this.getCanvas = Viewer.prototype.getCanvas.bind(this)
     this.getBpmnFactory = Viewer.prototype.getBpmnFactory.bind(this)
     this.getElementFactory = Viewer.prototype.getElementFactory.bind(this)
+    this.getElementRegistry = Viewer.prototype.getElementRegistry.bind(this)
     this.getRegisteredEvents = Viewer.prototype.getRegisteredEvents.bind(this)
     this.autoZoomAndCenter = Viewer.prototype.autoZoomAndCenter.bind(this)
     this.autoElementCenter = Viewer.prototype.autoElementCenter.bind(this)
     this.toggleTheme = Viewer.prototype.toggleTheme.bind(this)
+    this.addClass = Viewer.prototype.addClass.bind(this)
+    this.addStyle = Viewer.prototype.addStyle.bind(this)
 
     // 设置空流程
     this.initProcess = function (key: string = Date.now().toString(), name: string = 'Process') {

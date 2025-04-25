@@ -6,6 +6,8 @@ import type Canvas from 'diagram-js/lib/core/Canvas'
 import type EventBus from 'diagram-js/lib/core/EventBus'
 import type BpmnFactory from 'bpmn-js/lib/features/modeling/BpmnFactory'
 import type ElementFactory from 'bpmn-js/lib/features/modeling/ElementFactory'
+import { CSSProperties } from 'vue'
+import ElementRegistry from 'diagram-js/lib/core/ElementRegistry'
 
 export type ViewerTheme = 'dark' | 'light'
 export type ViewerOptions = BaseViewerOptions & {
@@ -40,6 +42,9 @@ export default class Viewer extends NavigatedViewer {
   }
   getElementFactory() {
     return this.get<ElementFactory>('elementFactory')
+  }
+  getElementRegistry() {
+    return this.get<ElementRegistry>('elementRegistry')
   }
 
   // 获取所有已注册的事件
@@ -90,14 +95,45 @@ export default class Viewer extends NavigatedViewer {
   ) {
     const canvas = this.getCanvas()
     if (Array.isArray(elements)) {
-      elements.forEach((el) => canvas.addMarker(el, className))
+      elements.forEach((el) => el && canvas.addMarker(el, className))
     } else {
-      canvas.addMarker(elements, className)
+      elements && canvas.addMarker(elements, className)
     }
   }
 
   /**
    * 设置样式
    */
-  addStyle() {}
+  addStyle(
+    elements: BpmnShape | BpmnConnection | string | Array<BpmnShape | BpmnConnection | string>,
+    styles: CSSProperties,
+    appendToReal: boolean = false
+  ) {
+    if (Array.isArray(elements)) {
+      return elements.forEach((el) => this.addStyle(el, styles, appendToReal))
+    }
+
+    const registry = this.getElementRegistry()
+    const svgElement = registry.getGraphics(elements)
+
+    if (!appendToReal) {
+      for (const stylesKey in styles) {
+        svgElement.style.setProperty(stylesKey, styles[stylesKey])
+      }
+      return
+    }
+
+    const visualElement = svgElement.querySelector('.djs-visual')
+    if (!visualElement) {
+      return
+    }
+    const elList = visualElement.querySelectorAll(':scope > *:not(defs)') as any as SVGElement[]
+
+    elList.forEach((el) => {
+      for (const stylesKey in styles) {
+        el.style.setProperty(stylesKey, styles[stylesKey])
+      }
+    })
+    return svgElement
+  }
 }
