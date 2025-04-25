@@ -80,4 +80,24 @@ export default class Viewer extends NavigatedViewer {
     this._theme = theme || (this._theme === 'light' ? 'dark' : 'light')
     this._container!.setAttribute('data-theme', this._theme)
   }
+
+  /**
+   * 添加 class 类名
+   */
+  addClass(
+    elements: BpmnShape | BpmnConnection | string | Array<BpmnShape | BpmnConnection | string>,
+    className: string
+  ) {
+    const canvas = this.getCanvas()
+    if (Array.isArray(elements)) {
+      elements.forEach((el) => canvas.addMarker(el, className))
+    } else {
+      canvas.addMarker(elements, className)
+    }
+  }
+
+  /**
+   * 设置样式
+   */
+  addStyle() {}
 }
