@@ -39,9 +39,9 @@
         <el-form-item label="禁用双击">
           <el-switch v-model="controlForm.labelEditing" inactive-text="停用" active-text="启用" @change="changeLabelEditingStatus" />
         </el-form-item>
-        <el-form-item label="自定义渲染">
+        <!-- <el-form-item label="自定义渲染">
           <el-switch v-model="controlForm.labelVisible" inactive-text="停用" active-text="启用" @change="changeLabelVisibleStatus" />
-        </el-form-item>
+        </el-form-item> -->
         <el-form-item label="流程引擎">
           <el-radio-group v-model="controlForm.prefix" @change="reloadProcessDesigner()">
             <el-radio label="camunda">camunda</el-radio>
@@ -88,7 +88,7 @@
 <script>
 import translations from "@/translations";
 // 自定义渲染（隐藏了 label 标签）
-import CustomRenderer from "@/modules/custom-renderer";
+// import CustomRenderer from "@/modules/custom-renderer";
 // 自定义元素选中时的弹出菜单（修改 默认任务 为 用户任务）
 import CustomContentPadProvider from "../package/designer/plugins/content-pad";
 // 自定义左侧菜单（修改 默认任务 为 用户任务）
@@ -175,10 +175,10 @@ export default {
       this.addis.labelEditing = status ? { labelEditingProvider: ["value", ""] } : false;
       this.reloadProcessDesigner();
     },
-    changeLabelVisibleStatus(status) {
-      this.addis.customRenderer = status ? CustomRenderer : false;
-      this.reloadProcessDesigner();
-    },
+    // changeLabelVisibleStatus(status) {
+    //   this.addis.customRenderer = status ? CustomRenderer : false;
+    //   this.reloadProcessDesigner();
+    // },
     elementClick(element) {
       console.log(element);
       this.element = element;
